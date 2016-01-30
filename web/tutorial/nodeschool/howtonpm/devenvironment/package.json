@@ -1,11 +1,12 @@
 {
   "name": "devenvironment",
-  "version": "0.0.0",
+  "version": "1.2.3",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
   },
+  "repository": "https://github.com/LianyuMa/live_and_learn/tree/master/web/tutorial/nodeschool/howtonpm/devenvironment",
   "author": "",
   "license": "ISC",
   "dependencies": {
