@@ -1,20 +1,21 @@
 var through = require('through');
-// var through2 = require('through2');
-var split = require('require');
+var split = require('split');
 var tr = through(write, end);
+var count = 1;
 
 function write(data) {
-  var writtenData = data.toString();
-  this.queue(writtenData);
+  
+  if (count % 2 == 1) {
+    var writtenData = data.toString().toLowerCase();
+  } else{
+    var writtenData = data.toString().toUpperCase();
+  }
+  this.queue(writtenData + '\n');
+  count++;
 }
 
 function end () {
   this.queue(null);
 }
 
-process.stdin.pipe(split()).pipe(tr);
-
-process.stdin.pipe(split()).pipe(through2(function (line, _, next) {
-  console.dir(line.toString());
-  next();
-}));
+process.stdin.pipe(split()).pipe(tr).pipe(process.stdout);
