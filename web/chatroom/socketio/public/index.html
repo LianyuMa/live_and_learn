@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" href="style.css">
+  </head>  
+  
+  <body>
+    <div class='login'>
+    <input placeholder='Username' type='text' />
+    </div>
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      $(document).ready(function() {
+        var socket = io();
+        //broadcast messages when someone connects
+        socket.on('hi', function() {
+          $('#messages').append($('<li>').text('A user connected'));
+        });
+
+        $('form').submit(function() {
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+
+        socket.on('chat message', function(msg) {
+          $('#messages').append($('<li>').text(msg));
+        });
+
+        //broadcast messages when someone disconnects
+        socket.on('bye', function() {
+          $('#messages').append($('<li>').text('A user left'));
+        });
+      });   
+    </script>
+  </body>
+</html>
