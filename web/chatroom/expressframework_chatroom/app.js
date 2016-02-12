@@ -17,17 +17,35 @@ var app = express();
 var io = socket_io();
 app.io = io;
 
+var usersCount = 0;
+
 //Socket.io events
 io.on('connection', function(socket) {
   console.log('a user connected');
-  socket.broadcast.emit('hi'); //broadcast messages when someone connects
-  socket.on('chat message', function(msg) {
-    io.emit('chat message', msg);
-    console.log('message: ' + msg);
+
+  socket.on('new user', function(username) {
+    socket.username = username;
+    ++usersCount;
+    socket.broadcast.emit('hi', {
+      username: socket.username
+    }); //broadcast messages when someone connects
   });
+
+  
+  socket.on('input message', function(msg) {
+    socket.broadcast.emit('output message', {
+      username: socket.username,
+      message: msg
+    });
+    console.log('message from ' + socket.username + ': ' + msg);
+  });
+
   socket.on('disconnect', function() {
-    console.log('user disconnected');
-    socket.broadcast.emit('bye'); //broadcast messages when someone disconnects
+    console.log(socket.username + ' disconnected');
+    --usersCount;
+    socket.broadcast.emit('bye', {
+      username: socket.username
+    }); //broadcast messages when someone disconnects
   });
 });
 

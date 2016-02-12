@@ -1,7 +1,12 @@
 extends layout
 
 block content
-  ul#messages
-  form(action='')
-    input#m(autocomplete='off')
-    button send
+  .login
+    form#loginform(action='')
+      input#loginInput(autocomplete='off')
+      button#loginButton Login
+  .chat
+    ul#messages
+    form#chatform(action='')
+      input#m(autocomplete='off')
+      button send

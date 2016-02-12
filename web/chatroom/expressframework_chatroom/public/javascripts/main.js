@@ -1,20 +1,52 @@
-var socket = io();
-//broadcast messages when someone connects
-socket.on('hi', function() {
-  $('#messages').append($('<li>').text('A user connected'));
-});
+$(function() {
 
-$('form').submit(function() {
-  socket.emit('chat message', $('#m').val());
-  $('#m').val('');
-  return false;
-});
+  var $loginPage = $('.login');
+  var $chatPage = $('.chat');
+  var $username;
 
-socket.on('chat message', function(msg) {
-  $('#messages').append($('<li>').text(msg));
-});
+  var socket = io();
+  //broadcast messages when someone connects
+  socket.on('hi', function(data) {
+    $('#messages').append($('<li>').text(data.username + ' connected'));
+  });
 
-//broadcast messages when someone disconnects
-socket.on('bye', function() {
-  $('#messages').append($('<li>').text('A user left'));
+  $('#loginform').submit(function() {
+    $username = $('#loginInput').val();
+    $loginPage.fadeOut();
+    $chatPage.show();
+
+    socket.emit('new user', $username);
+    return false;//Cancle the submit
+  });
+
+  $('#chatform').submit(function() {
+    var $inputMsg = $('#m').val();
+    if ($inputMsg) {
+      outputMessage({
+        username: $username,
+        message: $inputMsg
+      });
+      socket.emit('input message', $inputMsg);
+      
+    } else{}
+    
+    $('#m').val('');
+    return false;   
+  });
+
+  function outputMessage (data) {
+    $('#messages').append($('<li>').text(data.username + ": " + data.message));
+  }
+
+  socket.on('output message', function(data) {
+    outputMessage({
+      username: data.username,
+      message: data.message
+    });
+  });
+
+  //broadcast messages when someone disconnects
+  socket.on('bye', function(data) {
+    $('#messages').append($('<li>').text(data.username + ' left'));
+  });
 });
