@@ -40,6 +40,18 @@ io.on('connection', function(socket) {
     console.log('message from ' + socket.username + ': ' + msg);
   });
 
+  socket.on('typing', function() {
+    socket.broadcast.emit('typing', {
+      username: socket.username
+    });
+  });
+
+  socket.on('stop typing', function() {
+    socket.broadcast.emit('stop typing', {
+      username: socket.username
+    });
+  });
+
   socket.on('disconnect', function() {
     console.log(socket.username + ' disconnected');
     --usersCount;

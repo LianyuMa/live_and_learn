@@ -4,10 +4,14 @@ $(function() {
   var $chatPage = $('.chat');
   var $username;
 
+  var lastTypingTime;
+  var TYPING_TIMEOUT = 500;
+  var typing = false;
+
   var socket = io();
   //broadcast messages when someone connects
   socket.on('hi', function(data) {
-    $('#messages').append($('<li>').text(data.username + ' connected'));
+    $('#messages').append($('<li>').text(data.username + ' connected'));    
   });
 
   $('#loginform').submit(function() {
@@ -34,6 +38,27 @@ $(function() {
     return false;   
   });
 
+  $('#m').focus(function() {
+    $('#m').keydown(function(event) {
+      if (!typing) {
+        socket.emit('typing');
+        typing = true;
+      }
+
+      lastTypingTime = (new Date()).getTime();
+
+      setTimeout(function() {
+        var timeoutTimer = (new Date()).getTime();
+        var difftime = timeoutTimer - lastTypingTime;
+        if (difftime >= TYPING_TIMEOUT && typing) {
+          socket.emit('stop typing');
+          typing = false;
+        }
+      }, TYPING_TIMEOUT);
+
+    });
+  });
+
   function outputMessage (data) {
     $('#messages').append($('<li>').text(data.username + ": " + data.message));
   }
@@ -43,6 +68,22 @@ $(function() {
       username: data.username,
       message: data.message
     });
+  });
+
+  function outputStatus (data) {
+    $('#status').append($('<li>').text(data.username + ' is typing...'));
+  }
+
+  function outputOffStatus (data) {
+    $('#status').append($('<li>').text(data.username + ' finishes typing.'));
+  }
+
+  socket.on('typing', function(data) {
+    outputStatus(data);
+  });
+
+  socket.on('stop typing', function(data) {
+    outputOffStatus(data);
   });
 
   //broadcast messages when someone disconnects
