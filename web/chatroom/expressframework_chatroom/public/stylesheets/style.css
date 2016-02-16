@@ -11,6 +11,11 @@ body {
   display: none;
 }
 
+.chat .userlist {
+  float: right;
+  top: 20px;
+}
+
 .chat .status {
   border: 0;
   width: 100%;

@@ -78,6 +78,14 @@ $(function() {
     $('#status').append($('<li>').text(data.username + ' finishes typing.'));
   }
 
+  socket.on('show new user', function(data) {
+    $('#list').append($('<li>').text(data.username + ' is online now'));
+  });
+
+  socket.on('update left user', function(data) {
+    $('#list').append($('<li>').text(data.username + ' is offline now'));
+  });
+
   socket.on('typing', function(data) {
     outputStatus(data);
   });

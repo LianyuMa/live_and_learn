@@ -18,6 +18,7 @@ var io = socket_io();
 app.io = io;
 
 var usersCount = 0;
+var userList = [];
 
 //Socket.io events
 io.on('connection', function(socket) {
@@ -29,6 +30,10 @@ io.on('connection', function(socket) {
     socket.broadcast.emit('hi', {
       username: socket.username
     }); //broadcast messages when someone connects
+    //online user list
+    socket.broadcast.emit('show new user', {
+      username: socket.username
+    });
   });
 
   
@@ -58,6 +63,10 @@ io.on('connection', function(socket) {
     socket.broadcast.emit('bye', {
       username: socket.username
     }); //broadcast messages when someone disconnects
+    //update online user list
+    socket.broadcast.emit('update left user', {
+      username: socket.username
+    });
   });
 });
 
