@@ -83,7 +83,7 @@ $(function() {
   });
 
   socket.on('update left user', function(data) {
-    $('#list').append($('<li>').text(data.username + ' is offline now'));
+    $('#list li:contains(' + data.username + ')').remove();
   });
 
   socket.on('typing', function(data) {
@@ -91,7 +91,7 @@ $(function() {
   });
 
   socket.on('stop typing', function(data) {
-    outputOffStatus(data);
+    $('#status li:contains(' + data.username + ')').remove();
   });
 
   //broadcast messages when someone disconnects
