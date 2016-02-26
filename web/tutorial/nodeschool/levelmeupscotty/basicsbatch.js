@@ -1,10 +1,11 @@
+"use strict";
 var level    = require('level'),
     db       = level(process.argv[2]),
     fs       = require('fs'),
     filePath = process.argv[3]
     ;
 
-fs.readFile(filePath, {encoding: 'utf8'}, function (err, data) {
+fs.readFile(filePath, { encoding: 'utf8' }, function (err, data) {
   if (err) { return err; }
   var lines = data.split('\n'),
       batchCommands = []

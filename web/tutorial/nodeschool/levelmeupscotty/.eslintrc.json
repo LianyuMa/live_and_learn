@@ -4,7 +4,16 @@
         "react"
     ],
     "rules": {
+      "prefer-template": 0,
       "no-console": 0,
-      "prefer-template": 0
+      "no-multi-spaces": 0,
+      "one-var": [2, {
+        "var": "always", // Exactly one var declaration per function
+        "let": "always", // Exactly one let declaration per block
+        "const": "never" // Exactly one declarator per const declaration per block
+      }],
+      "no-var": 0,
+      "indent": 0,
+      "prefer-arrow-callback": 0
     }
 }
