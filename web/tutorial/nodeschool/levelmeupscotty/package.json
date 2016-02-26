@@ -1,0 +1,21 @@
+{
+  "name": "levelmeupscotty",
+  "version": "1.0.0",
+  "description": "",
+  "main": "allyourbase.js",
+  "dependencies": {
+    "level": "^1.4.0",
+    "level-sublevel": "^6.5.4",
+    "multilevel": "^7.3.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^6.0.2",
+    "eslint-config-google": "^0.4.0",
+    "eslint-plugin-react": "^4.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

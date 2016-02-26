@@ -1,5 +1,3 @@
-"use strict";
-
 var level    = require('level'),
     db       = level(process.argv[2]),
     fs       = require('fs'),
