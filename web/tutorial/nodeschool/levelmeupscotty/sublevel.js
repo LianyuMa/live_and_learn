@@ -1,8 +1,11 @@
-var level = require('level');
-var sub = require('level-sublevel');
-var db = sub(level(process.argv[2]));
-var robots = db.sublevel('robots');
-var dinosaurs = db.sublevel('dinosaurs');
+'use strict';
+
+var level = require('level'),
+    sub = require('level-sublevel'),
+    db = sub(level(process.argv[2])),
+    robots = db.sublevel('robots'),
+    dinosaurs = db.sublevel('dinosaurs')
+    ;
 
 dinosaurs.put('slogan', 'rawr', function (err) {
   if (err) {return console.error(err);}
