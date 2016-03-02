@@ -10,7 +10,7 @@ server.connection({
   port: Number(process.argv[2] || 8080)
 });
 
-server.route({ path: '/', method: 'GET', handler: function (require, reply) {
+server.route({ path: '/', method: 'GET', handler: function (request, reply) {
   reply('Hello hapi');
 } });
 
