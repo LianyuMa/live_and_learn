@@ -11,7 +11,7 @@ var
 
 server.connection({
   host: 'localhost',
-  port: Number(portNum || 8080),
+  port: Number(portNum || 8080)
 });
 
 server.register(Vision, function (err) {
