@@ -15,10 +15,10 @@ myHandler = function (request, reply) {
 };
 
 routeConfig = {
-  path: '/chickens/{breed}',
-  method: 'GET',
+  path   : '/chickens/{breed}',
+  method : 'GET',
   handler: myHandler,
-  config: {
+  config : {
     validate: {
       params: {
         with: Joi.string().required(),
