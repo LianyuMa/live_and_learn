@@ -3,8 +3,9 @@ extends layout
 block content
   .login
     form#loginform(action='')
-      input#loginInput(autocomplete='off')
-      button#loginButton Login
+      label(for='username') User Name
+      input#loginInput(autocomplete='off', type='text', name='username')
+      input(type='submit', value='Log In')
   .chat
     .userlist
       ul#list

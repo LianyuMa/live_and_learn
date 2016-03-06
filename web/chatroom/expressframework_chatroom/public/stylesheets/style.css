@@ -7,9 +7,9 @@ body {
   font: 13px Helvetica, Arial;
 }
 
-.chat {
+/*.chat {
   display: none;
-}
+}*/
 
 .chat .userlist {
   float: right;
