@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  .chat
+    .userlist
+      ul#list
+    ul#messages
+    .status
+      ul#status
+    form#chatform(action='')
+      input#m(autocomplete='off')
+      button send

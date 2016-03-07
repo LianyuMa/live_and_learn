@@ -1,0 +1,13 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Express Framework Chatroom
+  body
+    .signup
+    form#signup(method='POST' action='/signup')
+      label(for='username') User Name
+      input#signupInput(autocomplete='off', type='text', name='username')
+      label(for='password') Password
+      input#password(type='password', name='password')
+      input(type='submit', value='Sign Up')

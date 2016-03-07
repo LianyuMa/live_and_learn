@@ -1,0 +1,13 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    title Express Framework Chatroom
+  body
+    .login
+    form#loginform(method='POST' action='/login')
+      label(for='username') User Name
+      input#loginInput(autocomplete='off', type='text', name='username')
+      label(for='password') Password
+      input#password(type='password', name='password')
+      input(type='submit', value='Log In')
