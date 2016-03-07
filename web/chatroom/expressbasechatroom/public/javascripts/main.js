@@ -13,13 +13,20 @@ $(function() {
 
   
 
-  socket.on('hi', function(data) {
-    $('#messages').append($('<li>').text(data.username + ' connected'));    
-      
+  socket.on('greeting', function(data) {
     clientname = data.username;
+
+    $('#messages').append($('<li>').text('Welcome to chatroom: ' + clientname));
+      
   });
 
-      socket.emit('new user', clientname);
+  socket.emit('new user', clientname);
+
+  socket.on('hi', function(data) {
+        $('#messages').append($('<li>').text(data.username + ' connected'));
+  });
+
+      
   
   // $('#loginform').submit(function() {
   //   clientname = $('#loginInput').val();

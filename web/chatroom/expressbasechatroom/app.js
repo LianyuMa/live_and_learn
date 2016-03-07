@@ -1,12 +1,13 @@
 var express = require('express');
 
-
+var module_session = require('./bin/module_session');
 
 
 //express_session
-var session = require('express-session');
+var session = module_session.session;
 //session_store
-var RedisStore = require("connect-redis")(session);
+var RedisStore = module_session.RedisStore;
+var sessionMiddleware = module_session.sessionMiddleware;
 
 
 
@@ -21,10 +22,10 @@ var users = require('./routes/users');
 
 var app = express();
 
-var sessionMiddleware = session({
-    store: new RedisStore({}), // XXX redis server config
-    secret: "lianyuma",
-});
+// var sessionMiddleware = session({
+//     store: new RedisStore({}), // XXX redis server config
+//     secret: "lianyuma",
+// });
 
 // var sessionMiddleware = session({
 //   name: 'sid',

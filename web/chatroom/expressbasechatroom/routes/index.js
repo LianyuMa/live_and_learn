@@ -84,8 +84,11 @@ router.get('/signup', function(req, res) {
 
   console.log('get signup');
 
-  if (req.session.user) {return res.rediret('/');}
-  res.render('signup');
+  if (req.session.user) {
+    res.rediret('/');
+  }else {
+    res.render('signup');
+  }
 });
 
 router.post('/signup', userExist, function(req, res) {

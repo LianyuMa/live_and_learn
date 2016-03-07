@@ -1,17 +1,22 @@
 var io = require('socket.io')();
 
-//express_session
-var session = require('express-session');
+// //express_session
+// var session = require('express-session');
 
-var RedisStore = require("connect-redis")(session);
+// var RedisStore = require("connect-redis")(session);
 
-var sessionMiddleware = session({
-    store: new RedisStore({}), // XXX redis server config
-    secret: "lianyuma",
-});
+// var sessionMiddleware = session({
+//     store: new RedisStore({}), // XXX redis server config
+//     secret: "lianyuma",
+//     resave: true,
+//     saveUninitialized: true
+// });
+
+//session
+var module_session = require('./module_session');
 
 io.use(function(socket, next) {
-  sessionMiddleware(socket.request, socket.request.res, next);
+  module_session.sessionMiddleware(socket.request, socket.request.res, next);
 });
 
 
@@ -21,12 +26,12 @@ io.on('connection', function(socket) {
   var curname = socket.request.session.user;
   console.log(curname.username + ' entered into chatroom');
 
-  socket.broadcast.emit('hi', {
-    username: socket.username
+  socket.emit('greeting', {
+    username: curname.username
   });
 
   socket.broadcast.emit('show new user', {
-      username: socket.username
+      username: curname.username
   });
 
   //console.log('Session: ', socket.request.session.user);
