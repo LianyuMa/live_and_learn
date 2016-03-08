@@ -3,11 +3,19 @@ html(lang='en')
   head
     meta(charset='UTF-8')
     title Express Framework Chatroom
+    link(rel='stylesheet', href='/stylesheets/login.css')
+    meta(name='viewport', content="width=device-width", initial-scale=1)
   body
     .login
-    form#loginform(method='POST' action='/login')
-      label(for='username') User Name
-      input#loginInput(autocomplete='off', type='text', name='username')
-      label(for='password') Password
-      input#password(type='password', name='password')
-      input(type='submit', value='Log In')
+      form#loginform(method='POST' action='/login')
+        h1
+          label Login
+        .inset
+          p
+            label(for='username') USER NAME
+            input#loginInput(autocomplete='off', type='text', name='username', required)
+          p
+            label(for='password') PASSWORD
+            input#password(type='password', name='password', required)
+        p.p-container
+          input(type='submit', value='Login')

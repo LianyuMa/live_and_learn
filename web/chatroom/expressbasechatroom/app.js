@@ -9,7 +9,9 @@ var session = module_session.session;
 var RedisStore = module_session.RedisStore;
 var sessionMiddleware = module_session.sessionMiddleware;
 
-
+//stylus
+var stylus = require('stylus');
+var nib = require('nib');
 
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -21,6 +23,11 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+//ctylus compile
+function compile(str, path) {
+  return stylus(str).set('filename', path).use(nib());
+}
 
 // var sessionMiddleware = session({
 //     store: new RedisStore({}), // XXX redis server config
@@ -46,6 +53,13 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 app.use(logger('dev'));
+
+//use stylus middleware
+app.use(stylus.middleware(
+  { src: __dirname + '/public'
+  , compile: compile
+  }
+));
 
 // app.use(session({ resave: true,
 //                   saveUninitialized: true,
