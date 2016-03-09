@@ -75,7 +75,8 @@ router.get('/', function(req, res, next) {
     res.render('index');
   }
   else {
-    res.send("<a href='/login'> Login</a>" + "<br>" + "<a href='/signup'> Sign Up</a>");
+    res.redirect('login');
+    // res.send("<a href='/login'> Login</a>" + "<br>" + "<a href='/signup'> Sign Up</a>");
     console.log('login + signup');
   }
 });
@@ -85,9 +86,10 @@ router.get('/signup', function(req, res) {
   console.log('get signup');
 
   if (req.session.user) {
-    res.rediret('/');
+    res.redirect('/');
   }else {
     res.render('signup');
+    // res.render('login', {action: 'submit'});
   }
 });
 
