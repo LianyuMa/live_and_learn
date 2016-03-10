@@ -12,9 +12,6 @@ var hash = require('../bin/pass').hash;
 var app = express();
 var mongoose = require('mongoose');
 
-//DOMPurify
-var DOMPurify = require('dompurify');
-
 mongoose.connect('mongodb://localhost/my_database');
 var UserSchema = new mongoose.Schema({
   username: String,
@@ -24,11 +21,6 @@ var UserSchema = new mongoose.Schema({
 });
 
 var User = mongoose.model('users', UserSchema);
-
-//DOMPurify
-function cleanByDOMP (dirty) {
-  return DOMPurify.sanitize(dirty);
-}
 
 function authenticate(name, pass, fn) {
     if (!module.parent) console.log('authenticating %s:%s', name, pass);

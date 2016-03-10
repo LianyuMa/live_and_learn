@@ -12,6 +12,7 @@ body {
 .chat .userlist {
   float: right;
   top: 20px;
+  display: none;
 }
 
 .chat .status {
@@ -20,7 +21,6 @@ body {
   bottom: 42px;
   position: absolute;
   color: #20f440;
-  display: none
 }
 
 /*.chat .status ul{

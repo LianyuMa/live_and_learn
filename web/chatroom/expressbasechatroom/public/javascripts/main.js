@@ -16,7 +16,9 @@ $(function() {
     return myDate.toLocaleTimeString();
   }
 
-  
+  function cleanInput (dirty) {
+    return $('<div/>').text(dirty).text();
+  }  
 
   socket.on('greeting', function(data) {
     clientname = data.username;
@@ -44,6 +46,7 @@ $(function() {
 
   $('#chatform').submit(function() {
     var $inputMsg = $('#m').val();
+    $inputMsg = cleanInput($inputMsg);
     if ($inputMsg) {
       outputMessage({
         username: clientname,
