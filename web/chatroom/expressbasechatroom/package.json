@@ -22,7 +22,8 @@
     "session.socket.io": "0.2.1",
     "connect-redis": "3.0.2",
     "stylus": "0.54.0",
-    "nib": "1.1.0 "
+    "nib": "1.1.0 ",
+    "dompurify": "0.7.4"
   },
   "author": "Lianyu Ma"
 }

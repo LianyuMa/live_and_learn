@@ -11,10 +11,6 @@ var crypto = require('crypto');
 
 var len = 128;
 
-/**
- * Iterations. ~300ms
- */
-
 var iterations = 12000;
 
 /**

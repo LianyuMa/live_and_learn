@@ -63,6 +63,7 @@ function userExist(req, res, next) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if (req.session.user) {
+    console.log('From router get ' + req.session.user);
     res.render('index');
   }
   else {

@@ -3,8 +3,10 @@ var express = require('express');
 var socket_io = require('socket.io');
 //mongoose
 var mongoose = require('mongoose');
-
+//express_session
 var session = require('express-session');
+//session_store
+var sessionStore = new session.MemoryStore();
 
 //todo: hash
 
@@ -17,7 +19,11 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+//Express
 var app = express();
+
+// const KEY = 'cookieforchat';
+// const SECRET = 'secret';
 
 //mongodb connection
 
@@ -34,9 +40,15 @@ var app = express();
 
 
 
-//Socket.io
+// //Socket.io
 var io = socket_io();
 app.io = io;
+
+// var io = require('socket.io').listen(server);
+// var SessionSockets = require('session.socket.io'),
+//     sessionSockets = new SessionSockets(io, sessionStore, cookieParser);
+
+
 
 var usersCount = 0;
 var userList = [];
@@ -52,11 +64,18 @@ app.use(logger('dev'));
 
 app.use(session({ resave: true,
                   saveUninitialized: true,
-                  secret: 'uwotm8' }));
+                  // secret: SECRET,
+                  // name: KEY,
+                  secret: 'secret',
+                  store: sessionStore
+}));
+
+// app.use(session({ 
+//                   secret: 'secret' }));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser('Authentication of Chatroom'));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
@@ -76,13 +95,32 @@ app.use(function (req, res, next) {
 
 
 
-
 // Socket.io events
-io.on('connection', function(socket) {
-  console.log('a user connected');
 
+// io.use(function(socket, next) {
+//   var req = socket.request;
+//   console.log('appuse:' + socket.request);
+//   var res = {};
+//   // var cookies = cookie.parse(req.headers.cookie);
+//   cookieParser(req, res, function(err) {
+//     var sessionID = req.signedCookies[KEY];
+//     sessionStore.get(sessionID, function(err, session) {
+//       if (err) {return next(err);}
+//       if (! session) {return next(new Error('Session not found'))};
+//       console.log('else entered');
+//       socket.handshake.session = session;
+//       session(req, res, next);
+//     });
+    
+//   });
+// });
+
+io.on('connection', function(socket) {
+  console.log('connected');
+  console.log('Session: ', socket.request.session.user);
   socket.on('new user', function(username) {
-    socket.username = username;
+  socket.username = socket.handshake.session.user;
+     // socket.username = username;
     ++usersCount;
     socket.broadcast.emit('hi', {
       username: socket.username

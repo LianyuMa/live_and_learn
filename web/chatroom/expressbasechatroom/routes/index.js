@@ -12,6 +12,9 @@ var hash = require('../bin/pass').hash;
 var app = express();
 var mongoose = require('mongoose');
 
+//DOMPurify
+var DOMPurify = require('dompurify');
+
 mongoose.connect('mongodb://localhost/my_database');
 var UserSchema = new mongoose.Schema({
   username: String,
@@ -21,6 +24,11 @@ var UserSchema = new mongoose.Schema({
 });
 
 var User = mongoose.model('users', UserSchema);
+
+//DOMPurify
+function cleanByDOMP (dirty) {
+  return DOMPurify.sanitize(dirty);
+}
 
 function authenticate(name, pass, fn) {
     if (!module.parent) console.log('authenticating %s:%s', name, pass);
@@ -106,7 +114,6 @@ router.post('/signup', userExist, function(req, res) {
       salt: salt,
       hash: hash
     }).save(function(err, newUser) {
-      if (err) {throw err;}
       authenticate(newUser.username, password, function(err, user) {
         if (user) {
           req.session.regenerate(function() {

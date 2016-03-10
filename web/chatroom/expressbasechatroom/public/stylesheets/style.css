@@ -1,15 +1,13 @@
 * {
   margin: 0; padding: 0;
   box-sizing: border-box;
+  font-family: Consolas,monaco,monospace;
 }
 
 body {
-  font: 13px Helvetica, Arial;
+  background-color: #232735;
+  font-size: 16px;
 }
-
-/*.chat {
-  display: none;
-}*/
 
 .chat .userlist {
   float: right;
@@ -21,6 +19,8 @@ body {
   width: 100%;
   bottom: 42px;
   position: absolute;
+  color: #20f440;
+  display: none
 }
 
 /*.chat .status ul{
@@ -35,7 +35,6 @@ body {
 }*/
 
 .chat form {
-  background: #000;
   padding: 3px;
   position: fixed;
   bottom: 0;
@@ -43,17 +42,20 @@ body {
 }
 
 .chat form input {
-  border: 0;
+  color: #20f440;
+  border: 2px solid #20f440;
   padding: 10px;
-  width: 90%;
+  width: 100%;
   margin-right: .5%;
+  background-color: #232735;
 }
 
 .chat form button {
-  width: 9%;
+  display: none;
+/*  width: 9%;
   background: rgb(130, 224, 255);
   border: none;
-  padding: 10px;
+  padding: 10px;*/
 }
 
 #messages {
@@ -63,9 +65,18 @@ body {
 }
 
 #messages li {
-  padding: 5px 10px;
+  color: #20f440;
+  padding: 0 0 0 11px;
+}
+
+#messages .notice{
+  color: #aab2bf;
+}
+
+#messages .welcome{
+  font-size: 25px;
 }
 
 #messages li:nth-child(odd) {
-  background: #eee;
+
 }

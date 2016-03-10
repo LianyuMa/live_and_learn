@@ -6,24 +6,29 @@ $(function() {
 
   var lastTypingTime;
   var TYPING_TIMEOUT = 500;
-  var typing = false;
+  var typing = false; 
 
   var socket = io();
   //broadcast messages when someone connects
+
+  function getCurTime () {
+    var myDate = new Date();
+    return myDate.toLocaleTimeString();
+  }
 
   
 
   socket.on('greeting', function(data) {
     clientname = data.username;
 
-    $('#messages').append($('<li>').text('Welcome to chatroom: ' + clientname));
+    $('#messages').append($('<li class="welcome">').text('Welcome to chatroom: ' + clientname));
       
   });
 
   socket.emit('new user', clientname);
 
   socket.on('hi', function(data) {
-        $('#messages').append($('<li>').text(data.username + ' connected'));
+    $('#messages').append($('<li class="notice">').text(getCurTime() + " " + data.username + ' connected'));
   });
 
       
@@ -74,7 +79,7 @@ $(function() {
   });
 
   function outputMessage (data) {
-    $('#messages').append($('<li>').text(data.username + ": " + data.message));
+    $('#messages').append($('<li>').text(getCurTime() + " " + data.username + ": " + data.message));
   }
 
   socket.on('output message', function(data) {
@@ -110,7 +115,7 @@ $(function() {
 
   //broadcast messages when someone disconnects
   socket.on('bye', function(data) {
-    $('#messages').append($('<li>').text(data.username + ' left'));
+    $('#messages').append($('<li class="notice">').text(getCurTime() + " " + data.username + ' left'));
   });
 
 
