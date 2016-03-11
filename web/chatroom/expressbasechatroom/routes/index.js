@@ -75,7 +75,7 @@ router.get('/', function(req, res, next) {
     res.render('index');
   }
   else {
-    res.redirect('login');
+    res.render('login');
     // res.send("<a href='/login'> Login</a>" + "<br>" + "<a href='/signup'> Sign Up</a>");
     console.log('login + signup');
   }

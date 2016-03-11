@@ -20,7 +20,7 @@ io.use(function(socket, next) {
 });
 
 
-io.on('connection', function(socket) {
+io.sockets.on('connection', function(socket) {
   console.log('connected');
 
   var curname = socket.request.session.user;
