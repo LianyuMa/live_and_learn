@@ -1,8 +1,7 @@
 'use strict';
 
 var five  = require('johnny-five'),
-    board = new five.Board()
-    ;
+    board = new five.Board();
 
 board.on('ready', () => {
   var motor = new five.Motor(9);
