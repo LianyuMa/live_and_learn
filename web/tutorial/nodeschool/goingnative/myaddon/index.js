@@ -1,13 +1,12 @@
-'use strict';
+var addon = require('bindings')('myaddon')
 
-// var bindings = require('bindings'),
-//     myaddon  = bindings('myaddon')
-//     ;
+var interval = setInterval(function () {
+  process.stdout.write('.')
+}, 50)
 
-var myaddon = require('bindings')('myaddon');
+addon.delay(process.argv[2], function () {
+  clearInterval(interval)
+  console.log('Done!')
+})
 
-// myaddon.print(process.argv[2]);
-// console.log(addon.length(process.argv[2]));
-myaddon.delay(process.argv[2], () => {
-  console.log('Done!');
-});
+process.stdout.write('Waiting')
