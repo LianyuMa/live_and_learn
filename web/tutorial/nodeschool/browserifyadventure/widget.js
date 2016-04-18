@@ -2,17 +2,17 @@
 const domify = require('domify');
 const html = '<div>Hello <span class="name"></span>!</div>';
 
-module.exports = Widget;
-
 function Widget() {
   if (!(this instanceof Widget)) return new Widget;
   this.element = domify(html);
 }
 
-Widget.prototype.setName = function (name) {
+Widget.prototype.setName = (name) => {
   this.element.querySelector('.name').textContent = name;
 };
 
-Widget.prototype.appendTo = function (target) {
+Widget.prototype.appendTo = (target) => {
   target.appendChild(this.element);
 };
+
+module.exports = Widget;
