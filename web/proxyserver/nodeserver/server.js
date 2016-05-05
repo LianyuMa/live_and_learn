@@ -3,13 +3,18 @@ const httpProxy = require('http-proxy');
 
 const proxy = httpProxy.createProxyServer();
 
+proxy.on('error', (err, req, res) => {
+  res.writeHead(500, { 'Content-Type': 'text/plain' });
+  res.end();
+});
+
 http.createServer((req, res) => {
   setTimeout(() => {
     proxy.web(req, res, { target: 'http://localhost:9008' });
   }, 5000);
 }).listen(8008);
 
-httpProxy.createServer((req, res) => {
+http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.write(`request successfully proxied to: ${req.url}\n${JSON.stringify(req.headers, true, 2)}`);
   res.end();
