@@ -9,7 +9,7 @@ http.createServer((req, res) => {
   }, 5000);
 }).listen(8008);
 
-http.createServer((req, res) => {
+httpProxy.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.write(`request successfully proxied to: ${req.url}\n${JSON.stringify(req.headers, true, 2)}`);
   res.end();
