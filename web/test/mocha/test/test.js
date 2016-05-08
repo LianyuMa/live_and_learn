@@ -10,8 +10,11 @@ describe('Array', () => {
 
 
 describe('Node', () => {
-  it('assert', () => {
+  it('assert.equal', () => {
     assert.equal(1, true);
+    assert.equal(1, '1');
+    // assert.equal(1, 2);
+    // assert.equal({ a: { b: 1 } }, { a: { b: 1} });
     assert(true);
     assert(1);
     // assert(false);
@@ -47,5 +50,10 @@ describe('Node', () => {
     // assert.doesNotThrow(() => {throw new TypeError('Wrong value');}, SyntaxError);
     // assert.doesNotThrow(() => {throw new TypeError('Wrong value');}, TypeError);
     // assert.doesNotThrow(() => {throw new TypeError('Wrong value');}, TypeError, 'Whoops');
+  });
+
+  it('assert.fail', () => {
+    // assert.fail(1, 2, undefined, '>');
+    // assert.fail(1, 2, 'whoops', '>');
   });
 });
