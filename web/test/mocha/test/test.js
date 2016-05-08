@@ -10,11 +10,13 @@ describe('Array', () => {
 
 
 describe('Node', () => {
-  it('assert.equal', () => {
+  it('assert.equal & notEqual & notStrictEqual', () => {
     assert.equal(1, true);
     assert.equal(1, '1');
     // assert.equal(1, 2);
-    // assert.equal({ a: { b: 1 } }, { a: { b: 1} });
+    // assert.equal({ a: { b: 1 } }, { a: { b: 1 } });
+    assert.notEqual({ a: { b: 1 } }, { a: { b: 1 } });
+    assert.notStrictEqual(1, '1');
     assert(true);
     assert(1);
     // assert(false);
@@ -55,5 +57,12 @@ describe('Node', () => {
   it('assert.fail', () => {
     // assert.fail(1, 2, undefined, '>');
     // assert.fail(1, 2, 'whoops', '>');
+  });
+
+  it('assert.ifError', () => {
+    assert.ifError(0);
+    // assert.ifError(1);
+    // assert.ifError('error');
+    // assert.ifError(new Error()); // rror at Context.<anonymous>
   });
 });
