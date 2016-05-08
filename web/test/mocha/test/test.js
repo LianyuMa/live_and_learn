@@ -18,6 +18,7 @@ describe('Node', () => {
     // assert(0);
     // assert(false, 'it\'s false');
   });
+
   it('assert.deepEqual & notDeepEqual', () => {
     assert.deepEqual(Error('a'), Error('b'));
     const obj1 = {
@@ -41,7 +42,11 @@ describe('Node', () => {
     assert.deepEqual(obj1, obj3);
     assert.notDeepEqual(obj1, obj4);
   });
+
+  it('assert.doesNotThrow', () => {
+    // assert.doesNotThrow(() => {throw new TypeError('Wrong value');}, SyntaxError);
+    // assert.doesNotThrow(() => {throw new TypeError('Wrong value');}, TypeError);
+    // assert.doesNotThrow(() => {throw new TypeError('Wrong value');}, TypeError, 'Whoops');
+  });
 });
-
-
 
