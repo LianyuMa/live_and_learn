@@ -49,4 +49,3 @@ describe('Node', () => {
     // assert.doesNotThrow(() => {throw new TypeError('Wrong value');}, TypeError, 'Whoops');
   });
 });
-
