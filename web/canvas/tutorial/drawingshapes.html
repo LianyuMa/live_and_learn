@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Drawing shapes</title>
+    <script type="text/javascript">
+      function draw() {
+        var rectangular = document.getElementById('rectangular');
+        if (rectangular.getContext) {
+          var ctx0 = rectangular.getContext('2d');
+
+          ctx0.fillRect(25, 25, 100, 100);
+          ctx0.clearRect(45, 45, 60, 60);
+          ctx0.strokeRect(50, 50, 50, 50);
+        }
+
+        var triangle = document.getElementById('triangle');
+        if (triangle.getContext) {
+          var ctx1 = triangle.getContext('2d');
+          ctx1.beginPath();
+          ctx1.moveTo(75, 50);
+          ctx1.lineTo(100, 75);
+          ctx1.lineTo(100, 25);
+          ctx1.fill();
+        }
+
+        var smile = document.getElementById('smile');
+        if (smile.getContext) {
+          var ctx2 = smile.getContext('2d');
+          ctx2.beginPath();
+          ctx2.arc(75, 75, 50, 0, Math.PI*2, true);
+          ctx2.moveTo(110, 75);
+          ctx2.arc(75, 75, 35, 0, Math.PI, false);
+          ctx2.moveTo(65, 65);
+          ctx2.arc(60, 65, 5, 0, Math.PI*2, true);
+          ctx2.moveTo(95, 65);
+          ctx2.arc(90, 65, 5, 0, Math.PI*2, true);
+          ctx2.stroke();
+        }
+
+        var lines = document.getElementById('lines');
+        if (lines.getContext) {
+          var ctx3 = lines.getContext('2d');
+          ctx3.beginPath();
+          ctx3.moveTo(25, 25);
+          ctx3.lineTo(105, 25);
+          ctx3.lineTo(25, 105);
+          ctx3.fill();
+
+          ctx3.beginPath();
+          ctx3.moveTo(125, 125);
+          ctx3.lineTo(125, 45);
+          ctx3.lineTo(45, 125);
+          ctx3.closePath();
+          ctx3.stroke();
+        }
+
+        var arcs = document.getElementById('arcs');
+        if (arcs.getContext) {
+          var ctx4 = arcs.getContext('2d');
+
+          for (var i = 0; i < 4; i = i + 1) {
+            for (var j = 0; j < 3; j = j + 1) {
+              ctx4.beginPath();
+              var x = 25 + j * 50;
+              var y = 25 + i * 50;
+              var radius = 20;
+              var startAngle = 0;
+              var endAngle = Math.PI + (Math.PI * j)/2;
+              var anticlockwise = i % 2 == 0 ? false : true;
+
+              ctx4.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+
+              if (i > 1) {
+                ctx4.fill();
+              } else {
+                ctx4.stroke();
+              }
+            }
+          }
+        }
+
+        var quadraticBezier = document.getElementById('quadraticBezier');
+        if (quadraticBezier.getContext) {
+          var ctx5 = quadraticBezier.getContext('2d');
+
+          ctx5.beginPath();
+          ctx5.moveTo(75, 25);
+          ctx5.quadraticCurveTo(25, 25, 25, 62.5);
+          ctx5.quadraticCurveTo(25, 100, 50, 100);
+          ctx5.quadraticCurveTo(50, 120, 30, 125);
+          ctx5.quadraticCurveTo(60, 120, 65, 100);
+          ctx5.quadraticCurveTo(125, 100, 125, 62.5);
+          ctx5.quadraticCurveTo(125, 25, 75, 25);
+          ctx5.stroke();
+        }
+
+        var cubicBezier = document.getElementById('cubicBezier');
+        if (cubicBezier.getContext) {
+          var ctx6 = cubicBezier.getContext('2d');
+
+          ctx6.beginPath();
+          ctx6.moveTo(75, 40);
+          ctx6.bezierCurveTo(75 ,37, 70, 25, 50, 25);
+          ctx6.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
+          ctx6.bezierCurveTo(20, 80, 40, 102, 75, 120);
+          ctx6.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
+          ctx6.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
+          ctx6.bezierCurveTo(85, 25, 75, 37, 75, 40);
+          ctx6.fill();
+        }
+
+        var combination = document.getElementById('combination');
+        if (combination.getContext) {
+          var ctx7 = combination.getContext('2d');
+
+          function roundedRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x, y + radius);
+            ctx.lineTo(x, y + height - radius);
+            ctx.arcTo(x, y + height, x + radius, y + height, radius);
+            ctx.lineTo(x + width - radius, y + height);
+            ctx.arcTo(x + width, y + height, x + width, y + height - radius, radius);
+            ctx.lineTo(x + width, y + radius);
+            ctx.arcTo(x + width, y, x + width - radius, y, radius);
+            ctx.lineTo(x + radius, y);
+            ctx.stroke();
+          }
+
+          roundedRect(ctx7, 12, 12, 150, 150, 15);
+
+          // ctx7.fill();
+        }
+      }
+    </script>
+    <style type="text/css">
+    </style>
+  </head>
+  <body onload="draw();">
+    <canvas id="rectangular" width="150" height="150"></canvas>
+    <canvas id="triangle" width="150" height="150"></canvas>
+    <canvas id="smile" width="150" height="150"></canvas>
+    <canvas id="lines" width="150" height="150"></canvas>
+    <canvas id="arcs" width="150" height="200"></canvas>
+    <canvas id="quadraticBezier" width="150" height="150"></canvas>
+    <canvas id="cubicBezier" width="150" height="150"></canvas>
+    <canvas id="combination" width="300" height="300"></canvas>
+  </body>
+</html>
