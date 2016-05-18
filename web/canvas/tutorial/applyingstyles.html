@@ -5,7 +5,7 @@
     <title>Applying styles</title>
     <script type="text/javascript">
       function draw() {
-        var palette = document.getElementById('color palette');
+        var palette = document.getElementById('palette');
         if (palette.getContext) {
           var ctx1 = palette.getContext('2d');
 
@@ -29,6 +29,29 @@
             }
           }
         }
+
+        var gradual = document.getElementById('gradual');
+        if (gradual.getContext) {
+          var ctx3 = gradual.getContext('2d');
+
+          ctx3.fillStyle = '#FD0';
+          ctx3.fillRect(0, 0, 75, 75);
+          ctx3.fillStyle = '#6C0';
+          ctx3.fillRect(75, 0, 75, 75);
+          ctx3.fillStyle = '#09F';
+          ctx3.fillRect(0, 75, 75, 75);
+          ctx3.fillStyle = '#F30';
+          ctx3.fillRect(75, 75, 75, 75);
+          ctx3.fillStyle = '#FFF'
+
+          ctx3.globalAlpha = 0.2;
+
+          for (var i = 0; i < 7; i++) {
+            ctx3.beginPath();
+            ctx3.arc(75, 75, 10 + 10 * i, 0, Math.PI * 2, true);
+            ctx3.fill();
+          }
+        }
       }
     </script>
     <style type="text/css">
@@ -36,7 +59,8 @@
     </style>
   </head>
   <body onload="draw();">
-    <canvas id="color palette" width="150" height="150"></canvas>
+    <canvas id="palette" width="150" height="150"></canvas>
     <canvas id="hollow" width="150" height="150"></canvas>
+    <canvas id="gradual" width="150" height = "150"></canvas>
   </body>
 </html>
