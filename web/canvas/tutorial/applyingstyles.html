@@ -52,6 +52,27 @@
             ctx3.fill();
           }
         }
+
+        var rgbaGradual = document.getElementById('rgbaGradual');
+        if (rgbaGradual.getContext) {
+          var ctx4 = rgbaGradual.getContext('2d');
+
+          ctx4.fillStyle = 'rgb(255, 221, 0)';
+          ctx4.fillRect(0, 0, 150, 37.5);
+          ctx4.fillStyle = 'rgb(102, 204, 0)';
+          ctx4.fillRect(0, 37.5, 150, 37.5);
+          ctx4.fillStyle = 'rgb(0, 153, 255)';
+          ctx4.fillRect(0, 75, 150, 37.5);
+          ctx4.fillStyle = 'rgb(255, 51, 0)';
+          ctx4.fillRect(0, 112.5, 150, 37.5);
+
+          for (var i = 0; i < 10; i = i + 1) {
+            ctx4.fillStyle = 'rgba(255, 255, 255,' + (i + 1) / 10 + ')';
+            for (var j = 0; j < 4; j = j + 1) {
+              ctx4.fillRect(5 + i * 14, 5 + j * 37.5, 14, 27.5);
+            }
+          }
+        }
       }
     </script>
     <style type="text/css">
@@ -62,5 +83,6 @@
     <canvas id="palette" width="150" height="150"></canvas>
     <canvas id="hollow" width="150" height="150"></canvas>
     <canvas id="gradual" width="150" height = "150"></canvas>
+    <canvas id="rgbaGradual" width="150" height="150"></canvas>
   </body>
 </html>
