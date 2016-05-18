@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Applying styles</title>
+    <script type="text/javascript">
+      function draw() {
+        var palette = document.getElementById('color palette');
+        if (palette.getContext) {
+          var ctx1 = palette.getContext('2d');
+
+          for (var i = 0; i < 6; i = i + 1) {
+            for (var j = 0; j < 6; j = j + 1) {
+              ctx1.fillStyle = 'rgb(' + Math.floor(255 - 42.5 * i) + ',' + Math.floor(255 - 42.5 * j) + ',0)';
+              ctx1.fillRect(j * 25, i * 25, 25, 25);
+            }
+          }
+        }
+
+        var hollow = document.getElementById('hollow');
+        if (hollow.getContext) {
+          var ctx2 = hollow.getContext('2d');
+          for (var i = 0; i < 6; i = i + 1) {
+            for (var j = 0; j < 6; j = j + 1) {
+              ctx2.strokeStyle = 'rgb(0,' + Math.floor(255 - 42.5 * i) + ',' + Math.floor(255 - 42.5 * j) + ')';
+              ctx2.beginPath();
+              ctx2.arc(12.5 + j * 25, 12.5 + i * 25, 10, 0, Math.PI * 2, true);
+              ctx2.stroke();
+            }
+          }
+        }
+      }
+    </script>
+    <style type="text/css">
+      canvas { border: 1px solid black; }
+    </style>
+  </head>
+  <body onload="draw();">
+    <canvas id="color palette" width="150" height="150"></canvas>
+    <canvas id="hollow" width="150" height="150"></canvas>
+  </body>
+</html>
