@@ -110,6 +110,30 @@
             ctx6.stroke();
           }
         }
+
+        var lineCaps = document.getElementById('lineCaps');
+        if (lineCaps.getContext) {
+          var ctx7 = lineCaps.getContext('2d');
+          var lineCap = ['butt', 'round', 'square'];
+
+          ctx7.strokeStyle = '#09F';
+          ctx7.beginPath();
+          ctx7.moveTo(10, 10);
+          ctx7.lineTo(140, 10);
+          ctx7.moveTo(10, 140);
+          ctx7.lineTo(140, 140);
+          ctx7.stroke();
+
+          ctx7.strokeStyle = 'black';
+          for (var i = 0; i < lineCap.length; i = i + 1) {
+            ctx7.lineWidth = 15;
+            ctx7.lineCap = lineCap[i];
+            ctx7.beginPath();
+            ctx7.moveTo(25 + i * 50, 10);
+            ctx7.lineTo(25 + i * 50, 140);
+            ctx7.stroke();
+          }
+        }
       }
     </script>
     <style type="text/css">
@@ -123,5 +147,6 @@
     <canvas id="rgbaGradual" width="150" height="150"></canvas>
     <canvas id="marchingAnts" width="150" height="150"></canvas>
     <canvas id="barcode" width="150" height="150"></canvas>
+    <canvas id="lineCaps" width="150" height="150"></canvas>
   </body>
 </html>
