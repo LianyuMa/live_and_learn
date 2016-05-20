@@ -73,6 +73,30 @@
             }
           }
         }
+       
+        var marchingAnts = document.getElementById('marchingAnts');
+        if (marchingAnts.getContext) {
+          var marchOffset = 0;
+          var ctx5 = marchingAnts.getContext('2d');
+
+          function drawMarch() {
+            ctx5.clearRect(0, 0, marchingAnts.width, marchingAnts.height);
+            ctx5.setLineDash([4, 2]);
+            ctx5.lineDashOffset = - marchOffset;
+            ctx5.strokeRect(10, 10, 100, 100);
+          }
+          
+          function march() {
+            marchOffset++;
+            if (marchOffset > 16) {
+              marchOffset = 0;
+            }
+            drawMarch();
+            setTimeout(march, 20);
+          }
+
+          march();
+        }
       }
     </script>
     <style type="text/css">
@@ -84,5 +108,6 @@
     <canvas id="hollow" width="150" height="150"></canvas>
     <canvas id="gradual" width="150" height = "150"></canvas>
     <canvas id="rgbaGradual" width="150" height="150"></canvas>
+    <canvas id="marchingAnts" width="150" height="150"></canvas>
   </body>
 </html>
