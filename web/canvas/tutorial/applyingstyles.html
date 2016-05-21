@@ -134,6 +134,24 @@
             ctx7.stroke();
           }
         }
+
+        var brokenLines = document.getElementById('brokenLines');
+        if (brokenLines.getContext) {
+          var ctx8 = brokenLines.getContext('2d');
+          var lineJoin = ['round', 'bevel', 'miter'];
+          ctx8.lineWidth = 10;
+
+          for (var i = 0; i < lineJoin.length; i = i + 1) {
+            ctx8.lineJoin = lineJoin[i];
+            ctx8.beginPath();
+            ctx8.moveTo(-5, 5 + i * 40);
+            ctx8.lineTo(35, 45 + i * 40);
+            ctx8.lineTo(75, 5 + i * 40);
+            ctx8.lineTo(115, 45 + i * 40);
+            ctx8.lineTo(155, 5 + i * 40);
+            ctx8.stroke();
+          }
+        }
       }
     </script>
     <style type="text/css">
@@ -148,5 +166,6 @@
     <canvas id="marchingAnts" width="150" height="150"></canvas>
     <canvas id="barcode" width="150" height="150"></canvas>
     <canvas id="lineCaps" width="150" height="150"></canvas>
+    <canvas id="brokenLines" width="150" height="150"></canvas>
   </body>
 </html>
