@@ -153,7 +153,7 @@
           }
         }
 
-        var ctx9 = document.getElementById('lineargradient').getContext('2d');
+        var ctx9 = document.getElementById('linearGradient').getContext('2d');
         var lingrad = ctx9.createLinearGradient(0, 0, 0, 150);
         lingrad.addColorStop(0, '#00ABEB');
         lingrad.addColorStop(0.5, '#fff');
@@ -169,6 +169,36 @@
 
         ctx9.fillRect(10, 10, 130, 130);
         ctx9.strokeRect(50, 50, 50, 50);
+
+        var ctx10 = document.getElementById('radialGradient').getContext('2d');
+        var radgrad = ctx10.createRadialGradient(45, 45, 10, 52, 50, 30);
+        radgrad.addColorStop(0, '#A7D30C');
+        radgrad.addColorStop(0.9, '#019F62');
+        radgrad.addColorStop(1, 'rgba(1, 159, 98, 0)');
+
+        var radgrad2 = ctx10.createRadialGradient(105, 105, 20, 112, 120, 50);
+        radgrad2.addColorStop(0, '#FF5F98');
+        radgrad2.addColorStop(0.75, '#FF0188');
+        radgrad2.addColorStop(1, 'rgba(255, 1, 136, 0)');
+
+        var radgrad3 = ctx10.createRadialGradient(95, 15, 15, 102, 20, 40);
+        radgrad3.addColorStop(0, '#00C9FF');
+        radgrad3.addColorStop(0.8, '#00B5E2');
+        radgrad3.addColorStop(1, 'rgba(0, 201, 255, 0)');
+
+        var radgrad4 = ctx10.createRadialGradient(0, 150, 50, 0, 140, 90);
+        radgrad4.addColorStop(0, '#F4F201');
+        radgrad4.addColorStop(0.8, '#E4C700');
+        radgrad4.addColorStop(1, 'rgba(228, 199, 0, 0)');
+
+        ctx10.fillStyle = radgrad4;
+        ctx10.fillRect(0, 0, 150, 150);
+        ctx10.fillStyle = radgrad3;
+        ctx10.fillRect(0, 0, 150, 150);
+        ctx10.fillStyle = radgrad2;
+        ctx10.fillRect(0, 0, 150,150);
+        ctx10.fillStyle = radgrad;
+        ctx10.fillRect(0, 0, 150, 150);
       }
     </script>
     <style type="text/css">
@@ -184,6 +214,7 @@
     <canvas id="barcode" width="150" height="150"></canvas>
     <canvas id="lineCaps" width="150" height="150"></canvas>
     <canvas id="brokenLines" width="150" height="150"></canvas>
-    <canvas id="lineargradient" width="150" height="150"></canvas>
+    <canvas id="linearGradient" width="150" height="150"></canvas>
+    <canvas id="radialGradient" width="150" height="150"></canvas>
   </body>
 </html>
