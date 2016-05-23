@@ -13,6 +13,7 @@
     "eslint-plugin-react": "^5.0.1"
   },
   "dependencies": {
+    "agentkeepalive": "^2.1.1",
     "colors": "^1.1.2",
     "http-proxy": "^1.13.2"
   }
