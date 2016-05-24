@@ -1,5 +1,5 @@
 {
-  "name": "phantomjs",
+  "name": "mocha-phantomjs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,11 +8,11 @@
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "mocha-phantomjs-core": "^1.3.1"
+  },
   "devDependencies": {
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-react": "^5.1.1"
-  },
-  "dependencies": {
-    "jslint": "^0.9.6"
   }
 }
