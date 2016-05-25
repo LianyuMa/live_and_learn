@@ -209,6 +209,17 @@
           ctx11.fillStyle = ptrn;
           ctx11.fillRect(0, 0, 150, 150);
         }
+
+        var ctx12 = document.getElementById('shadow').getContext('2d');
+
+        ctx12.shadowOffsetX = 2;
+        ctx12.shadowOffsetY = 2;
+        ctx12.shadowBlur = 2;
+        ctx12.shadowColor = 'rgba(0, 0, 0, 0.5)';
+
+        ctx12.font = '20px Times New Roman';
+        ctx12.fillStyle = 'Black';
+        ctx12.fillText('Sample String', 5, 30);
       }
     </script>
     <style type="text/css">
@@ -227,5 +238,6 @@
     <canvas id="linearGradient" width="150" height="150"></canvas>
     <canvas id="radialGradient" width="150" height="150"></canvas>
     <canvas id="patterns" width="150" height="150"></canvas>
+    <canvas id="shadow" width="150" height="150"></canvas>
   </body>
 </html>
