@@ -199,6 +199,16 @@
         ctx10.fillRect(0, 0, 150,150);
         ctx10.fillStyle = radgrad;
         ctx10.fillRect(0, 0, 150, 150);
+
+        var ctx11 = document.getElementById('patterns').getContext('2d');
+
+        var img = new Image();
+        img.src = 'https://mdn.mozillademos.org/files/222/Canvas)createpattern.png';
+        img.onload = function() {
+          var ptrn = ctx11.createPattern(img, 'repeat');
+          ctx11.fillStyle = ptrn;
+          ctx11.fillRect(0, 0, 150, 150);
+        }
       }
     </script>
     <style type="text/css">
@@ -216,5 +226,6 @@
     <canvas id="brokenLines" width="150" height="150"></canvas>
     <canvas id="linearGradient" width="150" height="150"></canvas>
     <canvas id="radialGradient" width="150" height="150"></canvas>
+    <canvas id="patterns" width="150" height="150"></canvas>
   </body>
 </html>
