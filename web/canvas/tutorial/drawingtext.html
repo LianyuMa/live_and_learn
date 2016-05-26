@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Drawing text</title>
+    <script type="text/javascript">
+      function draw() {
+        var drawingText = document.getElementById('drawingText');
+        if (drawingText.getContext) {
+          var ctx = drawingText.getContext('2d');
+          ctx.font = '48px serif';
+          ctx.fillText('Hello world', 10, 50);
+        }
+
+        var ctx1 = document.getElementById('strokeText').getContext('2d');
+        ctx1.font = '48px serif';
+        ctx1.strokeText('Hello world', 10, 50);
+
+        var ctx2 = document.getElementById('stylingText').getContext('2d');
+        ctx2.font = '48px serif';
+        ctx2.textBaseline = 'bottom';
+        ctx2.fillText('Hello world', 0, 100);
+
+        var ctx3 = document.getElementById('measurement').getContext('2d');
+        var text = ctx3.measureText('foo');
+        console.log(text.width);
+      }
+    </script>
+    <style type="text/css">
+      canvas { border: 1px solid black; }
+    </style>
+  </head>
+  <body onload="draw();">
+    <canvas id="drawingText" width="300" height="150"></canvas>
+    <canvas id="strokeText" width="300" height="150"></canvas>
+    <canvas id="stylingText" width="300" height="150"></canvas>
+    <canvas id="measurement" width="300" height="150"></canvas>
+  </body>
+</html>
