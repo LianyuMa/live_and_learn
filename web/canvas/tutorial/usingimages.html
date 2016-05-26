@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Using images</title>
+    <script type="text/javascript">
+      function draw() {
+        var dataImage = document.getElementById('dataImage');
+        if (dataImage.getContext) {
+          var ctx = dataImage.getContext('2d');
+          var img = new Image();
+          img.src = 'data:image/gif;base64,R0lGODlhCwALAIAAAAAA3pn/ZiH5BAEAAAEALAAAAAALAAsAAAIUhA+hkcuO4lmNVindo7qyrIXiGBYAOw==';
+          ctx.drawImage(img, 0, 0);
+        }
+
+        var ctx1 = document.getElementById('lineGraph').getContext('2d');
+        var img1 = new Image();
+        img.onload = function() {
+          ctx1.drawImage(img1, 0, 0);
+          ctx1.beginPath();
+          ctx1.moveTo(30, 96);
+          ctx1.lineTo(70, 66);
+          ctx1.lineTo(103, 76);
+          ctx1.lineTo(170, 15);
+          ctx1.stroke();
+        };
+        img.src = 'https://mdn.mozillademos.org/files/5395/backdrop.png';
+      }
+    </script>
+    <style type="text/css">
+      canvas { border: 1px solid black; }
+    </style>
+  </head>
+  <body onload="draw();">
+    <canvas id="dataImage" width="150" height="150"></canvas>
+    <canvas id="lineGraph" width="150" height="150"></canvas>
+  </body>
+</html>
