@@ -3,6 +3,6 @@ test:
 								--harmony \
 								--reported sec \
 								--require should \
-								test.js
+								*/test.js
 
 .PHONY: test
