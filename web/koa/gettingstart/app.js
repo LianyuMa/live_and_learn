@@ -1,5 +1,5 @@
 const koa = require('koa');
-const app = koa();
+const app = module.exports = koa();
 
 app.use(function* responseTime(next) {
   const start = new Date;
