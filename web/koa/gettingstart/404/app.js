@@ -4,7 +4,7 @@ const app = module.exports = koa();
 app.use(function* pageNotFound(next) {
   yield next;
 
-  if (404 != this.status) return;
+  if (this.status !== 404) return;
 
   this.status = 404;
 
