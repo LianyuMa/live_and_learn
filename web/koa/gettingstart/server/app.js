@@ -21,7 +21,7 @@ app.use(function* contentLength(next) {
   this.set('Content-Length', this.body.length);
 });
 
-app.use(function* body(next) {
+app.use(function* respond(next) {
   yield next;
   if (this.path !== '/') return;
   this.body = 'Hello world!';
