@@ -5,9 +5,9 @@ describe('404', () => {
   describe('when GET /', () => {
     it('should return the 404 page', (done) => {
       request
-      .get('/')
-      .expect(404)
-      .expect(/Page Not Found/, done);
+        .get('/')
+        .expect(404)
+        .expect(/Page Not Found/, done);
     });
   });
 });
