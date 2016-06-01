@@ -17,15 +17,15 @@ app.use(function* parseBody(next) {
 
 app.use(csrf());
 
-app.use(route.get('/token', token));
-app.use(route.post('/post', post));
-
-function* token () {
+function* token() {
   this.body = this.csrf;
 }
 
-function* post () {
+function* post() {
   this.body = { ok: true };
 }
+
+app.use(route.get('/token', token));
+app.use(route.post('/post', post));
 
 if (!module.parent) app.listen(3000);
