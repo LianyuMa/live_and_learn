@@ -23,6 +23,7 @@
     "koa-logger": "^1.3.0",
     "koa-route": "^2.4.2",
     "koa-session": "^3.3.1",
-    "raw-body": "^2.1.6"
+    "raw-body": "^2.1.6",
+    "streaming-json-stringify": "^3.1.0"
   }
 }
