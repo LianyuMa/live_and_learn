@@ -22,6 +22,11 @@ app.use(function* renderBody(next) {
   if (type === false) this.throw(406);
   if (type === 'json') return;
   if (type === 'xml') {
+    this.type = 'xml';
+    this.body = `<name>${this.body.name}</name>`;
+    return;
+  }
+  if (type === 'html') {
     this.type = 'html';
     this.body = `<h1>${this.body.name}</h1>`;
     return;
