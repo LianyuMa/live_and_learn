@@ -25,6 +25,17 @@
           ctx1.stroke();
         };
         img1.src = 'https://mdn.mozillademos.org/files/5395/backdrop.png';
+
+        var ctx2 = document.getElementById('tilingImage').getContext('2d');
+        var img2 = new Image();
+        img2.onload = function() {
+          for (var i = 0; i < 4; i++) {
+            for (var j = 0; j < 3; j++) {
+              ctx2.drawImage(img2, j * 50, i * 38, 50, 38);
+            }
+          }
+        };
+        img2.src = 'https://mdn.mozillademos.org/files/5397/rhino.jpg';
       }
     </script>
     <style type="text/css">
@@ -34,5 +45,6 @@
   <body onload="draw();">
     <canvas id="dataImage" width="150" height="150"></canvas>
     <canvas id="lineGraph" width="300" height="150"></canvas>
+    <canvas id="tilingImage" width="150" height="150"></canvas>
   </body>
 </html>
