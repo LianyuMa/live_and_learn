@@ -1,0 +1,30 @@
+{
+  "name": "react-view",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "escape-html": "^1.0.3",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-react": "^5.1.1",
+    "jsx-loader": "^0.13.2",
+    "koa": "^1.2.0",
+    "koa-static-cache": "^3.1.7",
+    "unescape-html": "^1.0.0",
+    "webpack": "^1.13.1"
+  },
+  "dependencies": {
+    "koa-react-view": "^2.0.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
+  }
+}
