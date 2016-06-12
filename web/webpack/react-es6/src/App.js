@@ -1,16 +1,21 @@
 import React, {Component} from 'react';
+import Paragraph from './Paragraph';
 
 // const App = () => {
 //   return '<h1>Woop</h1>';
 // };
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
-      <h1>This is React!</h1>
+      <div className="my-app">
+        <h1>This is React!!!</h1>
+        <Paragraph text="First Paragraph" />
+        <Paragraph text="Second Paragraph" />
+      </div>
     );
   }
 }
 
 // module.exports = App;
-export default App;
+// export default App;

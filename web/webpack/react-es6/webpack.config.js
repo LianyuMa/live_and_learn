@@ -21,4 +21,8 @@ module.exports = {
     filename: 'bundle.js',
   },
   entry: ['./src/index.js'],
+
+  watch: true,
+  colors: true,
+  progress: true,
 };
