@@ -16,6 +16,8 @@
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-preset-stage-2": "^6.5.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-react": "^5.1.1",
     "webpack": "^1.13.1"
   }
 }

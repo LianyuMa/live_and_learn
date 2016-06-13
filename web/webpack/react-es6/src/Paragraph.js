@@ -1,9 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-export default class Paragraph extends Component {
-  render() {
-    return (
-      <p>{this.props.text}</p>
-    );
-  }
+export default function Paragraph({ text }) {
+  return (
+    <p>{text}</p>
+  );
 }
+
+Paragraph.propTypes = {
+  text: React.PropTypes.string.isRequired,
+};
