@@ -5,8 +5,8 @@ import { Router, Route, hashHistory } from 'react-router';
 
 // ReactDOM.render(<App />, document.getElementById('app'));
 
-render((
+ReactDOM.render((
   <Router history={hashHistory}>
-    <Router path="/" component={App} />
+    <Route path="/" component={App} />
   </Router>
 ), document.getElementById('app'));

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint ./modules/*.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch"
   },
@@ -17,9 +18,13 @@
   },
   "devDependencies": {
     "babel-core": "^6.9.1",
+    "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
+    "eslint": "^2.12.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-react": "^5.1.1",
     "webpack": "^1.13.1"
   }
 }
