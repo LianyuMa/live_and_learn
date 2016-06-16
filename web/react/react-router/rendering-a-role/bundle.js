@@ -60,6 +60,14 @@
 
 	var _reactRouter = __webpack_require__(169);
 
+	var _About = __webpack_require__(230);
+
+	var _About2 = _interopRequireDefault(_About);
+
+	var _Repos = __webpack_require__(231);
+
+	var _Repos2 = _interopRequireDefault(_Repos);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// ReactDOM.render(<App />, document.getElementById('app'));
@@ -67,7 +75,9 @@
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
 	  { history: _reactRouter.hashHistory },
-	  _react2.default.createElement(_reactRouter.Route, { path: '/', component: _App2.default })
+	  _react2.default.createElement(_reactRouter.Route, { path: '/', component: _App2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/repos', component: _Repos2.default }),
+	  _react2.default.createElement(_reactRouter.Route, { path: '/about', component: _About2.default })
 	), document.getElementById('app'));
 
 /***/ },
@@ -25898,6 +25908,56 @@
 
 	exports.default = (0, _createRouterHistory2.default)(_createHashHistory2.default);
 	module.exports = exports['default'];
+
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = About;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function About() {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    'About'
+	  );
+	}
+
+/***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = Repos;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function Repos() {
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    'Repos'
+	  );
+	}
 
 /***/ }
 /******/ ]);
