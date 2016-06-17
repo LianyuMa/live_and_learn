@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-export default React.createClass({
+export default class App extends React.Component {
   render() {
+    if (!this.props.app) return null;
     return (
       <div>
         <h1>React Router Tutorial</h1>
@@ -13,5 +14,5 @@ export default React.createClass({
         {this.props.children}
       </div>
     );
-  },
-});
+  }
+}
