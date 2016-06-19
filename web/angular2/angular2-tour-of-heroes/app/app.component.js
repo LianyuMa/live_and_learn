@@ -35,6 +35,11 @@ var AppComponent = (function () {
                 useAsDefault: true,
             },
             {
+                path: './detail/:id',
+                name: 'HeroDetail',
+                component: heroes_component_1.HeroesComponent,
+            },
+            {
                 path: './heroes',
                 name: 'Heroes',
                 component: heroes_component_1.HeroesComponent,
