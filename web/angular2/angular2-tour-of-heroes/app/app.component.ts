@@ -32,7 +32,7 @@ import { HeroDetailComponent } from './hero-detail.component';
   {
     path: './detail/:id',
     name: 'HeroDetail',
-    component: HeroesComponent,
+    component: HeroDetailComponent,
   },
   {
     path: './heroes',
