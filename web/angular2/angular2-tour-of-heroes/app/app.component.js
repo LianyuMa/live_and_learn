@@ -17,12 +17,19 @@ var AppComponent = (function () {
         this.title = 'Tour of Heroes';
     }
     ;
-    AppComponent.prototype.getHeroes = function () {
+    // getHeroes() {
+    //   this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    // }
+    // ngOnInit() {
+    //   this.getHeroes();
+    // }
+    // Take it slow
+    AppComponent.prototype.getHeroesSlowly = function () {
         var _this = this;
-        this.heroService.getHeroes().then(function (heroes) { return _this.heroes = heroes; });
+        this.heroService.getHeroesSlowly().then(function (heroes) { return _this.heroes = heroes; });
     };
     AppComponent.prototype.ngOnInit = function () {
-        this.getHeroes();
+        this.getHeroesSlowly();
     };
     AppComponent.prototype.onSelect = function (hero) { this.selectedHero = hero; };
     ;

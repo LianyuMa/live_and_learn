@@ -13,8 +13,15 @@ var mock_heroes_1 = require('./mock-heroes');
 var HeroService = (function () {
     function HeroService() {
     }
-    HeroService.prototype.getHeroes = function () {
-        return Promise.resolve(mock_heroes_1.HEROES);
+    // getHeroes() {
+    //   return Promise.resolve(HEROES);
+    // }
+    HeroService.prototype.getHeroesSlowly = function () {
+        return new Promise(function (resolve) {
+            return setTimeout(function () { return resolve(mock_heroes_1.HEROES); }, 2000);
+        } // 2 seconds
+         // 2 seconds
+        );
     };
     HeroService = __decorate([
         core_1.Injectable(), 
