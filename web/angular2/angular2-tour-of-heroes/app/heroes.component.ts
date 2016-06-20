@@ -9,7 +9,6 @@ import { HeroService } from './hero.service';
   templateUrl: 'app/heroes.component.html',
   styleUrls: ['app/heroes.component.css'],
 })
-
 export class HeroesComponent implements OnInit {
   // title = 'Tour of Heroes';
   // hero = 'windstorm';
@@ -21,7 +20,7 @@ export class HeroesComponent implements OnInit {
   selectedHero: Hero;
   constructor(
     private router: Router,
-    private heroService: HeroService) { };
+    private heroService: HeroService) { }
 
   getHeroes() {
     this.heroService.getHeroes().then(heroes => this.heroes = heroes);
