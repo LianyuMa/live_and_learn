@@ -9,12 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mock_heroes_1 = require('./mock-heroes');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/toPromise');
 var HeroService = (function () {
-    function HeroService() {
+    function HeroService(http) {
+        this.http = http;
+        this.heroesUrl = 'app/heroes'; // URL to web api
     }
+    ;
     HeroService.prototype.getHeroes = function () {
-        return Promise.resolve(mock_heroes_1.HEROES);
+        return this.http.get(this.heroesUrl)
+            .toPromise()
+            .then(function (response) { return response.json().data; })
+            .catch(this.handleError);
     };
     HeroService.prototype.getHero = function (id) {
         return this.getHeroes()
@@ -22,9 +29,18 @@ var HeroService = (function () {
             return heroes.filter(function (hero) { return hero.id === id; })[0];
         });
     };
+    // getHeroesSlowly() {
+    //   return new Promise<Hero[]>(resolve =>
+    //     setTimeout(() => resolve(HEROES), 2000) // 2 seconds
+    //   );
+    // }
+    HeroService.prototype.handleError = function (error) {
+        console.error('An error occurred', error);
+        return Promise.reject(error.message || error);
+    };
     HeroService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], HeroService);
     return HeroService;
 }());
