@@ -16,7 +16,6 @@ var HeroService = (function () {
         this.http = http;
         this.heroesUrl = 'app/heroes'; // URL to web api
     }
-    ;
     HeroService.prototype.getHeroes = function () {
         return this.http.get(this.heroesUrl)
             .toPromise()
