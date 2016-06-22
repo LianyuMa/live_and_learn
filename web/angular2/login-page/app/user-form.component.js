@@ -9,20 +9,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
 var user_1 = require('./user');
+// import { UserService } from './user.service';
 var UserFormComponent = (function () {
-    function UserFormComponent() {
+    function UserFormComponent(http) {
+        this.http = http;
         // model = new User('Jon', 'Snow', 'snowj@hbo.com', 'jonsnow');
         this.model = new user_1.User('', '', '', '');
+        // constructor(private userService: UserService) {}
         this.submitted = false;
         this.active = true;
     }
     UserFormComponent.prototype.onSubmit = function () { this.submitted = true; };
     UserFormComponent.prototype.newUser = function () {
         var _this = this;
-        this.model = new user_1.User('Jon', '', '', '');
+        this.model = new user_1.User('Jon', 'Snow', 'snowj@hbo.com', 'jonsnow');
         this.active = false;
         setTimeout(function () { return _this.active = true; }, 0);
+    };
+    UserFormComponent.prototype.register = function (model) {
+        var _this = this;
+        var firstname = model.firstname;
+        var lastname = model.lastname;
+        var email = model.email;
+        var password = model.password;
+        this.http.post('http://test-api.evermight.com/register.php', JSON.stringify({
+            firstname: firstname,
+            lastname: lastname,
+            email: email,
+            password: password,
+        })).subscribe(function (res) {
+            _this.data = res.json();
+        });
     };
     Object.defineProperty(UserFormComponent.prototype, "diagnostic", {
         // TODO: Remove this when we're done
@@ -35,7 +54,7 @@ var UserFormComponent = (function () {
             selector: 'user-form',
             templateUrl: 'app/user-form.component.html',
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], UserFormComponent);
     return UserFormComponent;
 }());
