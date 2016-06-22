@@ -15,6 +15,10 @@ export class UserFormComponent {
 
   onSubmit() { this.submitted = true }
 
+  newUser() {
+    this.model = new User('Jon', '', '', '');
+  }
+
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
 }
