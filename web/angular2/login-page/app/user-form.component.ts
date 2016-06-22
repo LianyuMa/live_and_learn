@@ -9,7 +9,9 @@ import { User } from './user';
 })
 export class UserFormComponent {
 
-  model = new User('Jon', 'Snow', 'snowj@hbo.com', 'jonsnow');
+  // model = new User('Jon', 'Snow', 'snowj@hbo.com', 'jonsnow');
+
+  model = new User('', '', '', '');
 
   submitted = false;
 

@@ -12,7 +12,8 @@ var core_1 = require('@angular/core');
 var user_1 = require('./user');
 var UserFormComponent = (function () {
     function UserFormComponent() {
-        this.model = new user_1.User('Jon', 'Snow', 'snowj@hbo.com', 'jonsnow');
+        // model = new User('Jon', 'Snow', 'snowj@hbo.com', 'jonsnow');
+        this.model = new user_1.User('', '', '', '');
         this.submitted = false;
         this.active = true;
     }
