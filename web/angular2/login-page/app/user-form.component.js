@@ -14,8 +14,15 @@ var UserFormComponent = (function () {
     function UserFormComponent() {
         this.model = new user_1.User('Jon', 'Snow', 'snowj@hbo.com', 'jonsnow');
         this.submitted = false;
+        this.active = true;
     }
     UserFormComponent.prototype.onSubmit = function () { this.submitted = true; };
+    UserFormComponent.prototype.newUser = function () {
+        var _this = this;
+        this.model = new user_1.User('Jon', '', '', '');
+        this.active = false;
+        setTimeout(function () { return _this.active = true; }, 0);
+    };
     Object.defineProperty(UserFormComponent.prototype, "diagnostic", {
         // TODO: Remove this when we're done
         get: function () { return JSON.stringify(this.model); },

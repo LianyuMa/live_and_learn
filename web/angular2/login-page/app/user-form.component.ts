@@ -15,8 +15,12 @@ export class UserFormComponent {
 
   onSubmit() { this.submitted = true }
 
+  active = true;
+
   newUser() {
     this.model = new User('Jon', '', '', '');
+    this.active = false;
+    setTimeout(() => this.active = true, 0);
   }
 
   // TODO: Remove this when we're done
