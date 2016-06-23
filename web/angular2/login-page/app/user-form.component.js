@@ -11,6 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var user_1 = require('./user');
+require('rxjs/add/operator/map');
+require('rxjs/add/operator/catch');
 // import { UserService } from './user.service';
 var UserFormComponent = (function () {
     function UserFormComponent(http) {
@@ -34,14 +36,25 @@ var UserFormComponent = (function () {
         var lastname = model.lastname;
         var email = model.email;
         var password = model.password;
-        this.http.post('http://test-api.evermight.com/register.php', JSON.stringify({
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
-            password: password,
-        })).subscribe(function (res) {
+        // let headers = new Headers({ 'Content-Type': 'application/json' });
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        var creds = "firstname=" + firstname + "&lastname=" + lastname + "&email=" + email + "&password=" + password + "&appkey=12";
+        // const creds = `appkey="12"`;
+        // this.http.post('http://test-api.evermight.com/register.php', JSON.stringify({
+        //   firstname: firstname,
+        //   lastname: lastname,
+        //   email: email,
+        //   password: password,
+        //   appkey: 12,
+        // // }), { headers: headers }).map(this.extractData).catch(this.handleError);
+        // }), { headers: headers }).subscribe((res: Response) => {
+        //   this.data = res.json();
+        // });
+        this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).subscribe(function (res) {
             _this.data = res.json();
         });
+        this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).map(function (res) { return res.json(); }).subscribe(function (data) { return _this.data; }, function (err) { return console.error(err); }, function () { return console.log('Authentication Complete'); });
     };
     Object.defineProperty(UserFormComponent.prototype, "diagnostic", {
         // TODO: Remove this when we're done
