@@ -40,6 +40,7 @@ var UserFormComponent = (function () {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         var creds = "firstname=" + firstname + "&lastname=" + lastname + "&email=" + email + "&password=" + password + "&appkey=12";
+        var options = new http_1.RequestOptions({ headers: headers });
         // const creds = `appkey="12"`;
         // this.http.post('http://test-api.evermight.com/register.php', JSON.stringify({
         //   firstname: firstname,
@@ -51,10 +52,10 @@ var UserFormComponent = (function () {
         // }), { headers: headers }).subscribe((res: Response) => {
         //   this.data = res.json();
         // });
-        this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).subscribe(function (res) {
-            _this.data = res.json();
-        });
-        this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).map(function (res) { return res.json(); }).subscribe(function (data) { return _this.data; }, function (err) { return console.error(err); }, function () { return console.log('Authentication Complete'); });
+        // this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).subscribe((res: Response) => {
+        //   this.data = res.json();
+        // });
+        this.http.post('http://test-api.evermight.com/register.php', creds, options).map(function (res) { return res.json(); }).subscribe(function (data) { return _this.data; }, function (err) { return console.error(err); }, function () { return console.log('Authentication Complete'); });
     };
     Object.defineProperty(UserFormComponent.prototype, "diagnostic", {
         // TODO: Remove this when we're done

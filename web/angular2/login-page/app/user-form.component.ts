@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/common';
-import { Http, Response, Headers } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { User } from './user';
 import 'rxjs/add/operator/map';
@@ -43,6 +43,8 @@ export class UserFormComponent {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     const creds = `firstname=${firstname}&lastname=${lastname}&email=${email}&password=${password}&appkey=12`;
+
+    let options = new RequestOptions({ headers: headers });
     // const creds = `appkey="12"`;
     
     // this.http.post('http://test-api.evermight.com/register.php', JSON.stringify({
@@ -55,11 +57,11 @@ export class UserFormComponent {
     // }), { headers: headers }).subscribe((res: Response) => {
     //   this.data = res.json();
     // });
-    this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).subscribe((res: Response) => {
-      this.data = res.json();
-    });
+    // this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).subscribe((res: Response) => {
+    //   this.data = res.json();
+    // });
 
-    this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).map(res => res.json()).subscribe(data => this.data, err => console.error(err), () => console.log('Authentication Complete'));
+    this.http.post('http://test-api.evermight.com/register.php', creds, options).map(res => res.json()).subscribe(data => this.data, err => console.error(err), () => console.log('Authentication Complete'));
   }
 
   // TODO: Remove this when we're done
