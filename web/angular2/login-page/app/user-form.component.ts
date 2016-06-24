@@ -34,6 +34,10 @@ export class UserFormComponent {
     setTimeout(() => this.active = true, 0);
   }
 
+  clearForm(model) {
+    this.model = new User('', '', '', '');
+  }
+
   register(model) {
     const firstname = model.firstname;
     const lastname = model.lastname;
@@ -70,8 +74,10 @@ export class UserFormComponent {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     const creds = `email=${email}&password=${password}&appkey=12`;
-    this.http.post('http://test-api.evermight.com/login.php', creds, { headers }).map(res => res.json()).subscribe(data => this.data, err => console.error(err), () => console.log('Authentication Complete'));
+    this.http.post('http://test-api.evermight.com/login.php', creds, { headers }).map(res => res.json()).subscribe(data => console.log(data), err => console.error(err), () => console.log('Authentication Complete'));
   }
+
+  // get data() { return this.data }
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }

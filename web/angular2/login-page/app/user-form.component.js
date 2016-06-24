@@ -30,6 +30,9 @@ var UserFormComponent = (function () {
         this.active = false;
         setTimeout(function () { return _this.active = true; }, 0);
     };
+    UserFormComponent.prototype.clearForm = function (model) {
+        this.model = new user_1.User('', '', '', '');
+    };
     UserFormComponent.prototype.register = function (model) {
         var _this = this;
         var firstname = model.firstname;
@@ -58,15 +61,15 @@ var UserFormComponent = (function () {
         this.http.post('http://test-api.evermight.com/register.php', creds, options).map(function (res) { return res.json(); }).subscribe(function (data) { return _this.data; }, function (err) { return console.error(err); }, function () { return console.log('Authentication Complete'); });
     };
     UserFormComponent.prototype.login = function (model) {
-        var _this = this;
         var email = model.email;
         var password = model.password;
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         var creds = "email=" + email + "&password=" + password + "&appkey=12";
-        this.http.post('http://test-api.evermight.com/login.php', creds, { headers: headers }).map(function (res) { return res.json(); }).subscribe(function (data) { return _this.data; }, function (err) { return console.error(err); }, function () { return console.log('Authentication Complete'); });
+        this.http.post('http://test-api.evermight.com/login.php', creds, { headers: headers }).map(function (res) { return res.json(); }).subscribe(function (data) { return console.log(data); }, function (err) { return console.error(err); }, function () { return console.log('Authentication Complete'); });
     };
     Object.defineProperty(UserFormComponent.prototype, "diagnostic", {
+        // get data() { return this.data }
         // TODO: Remove this when we're done
         get: function () { return JSON.stringify(this.model); },
         enumerable: true,
