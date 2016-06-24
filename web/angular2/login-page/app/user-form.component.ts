@@ -64,6 +64,15 @@ export class UserFormComponent {
     this.http.post('http://test-api.evermight.com/register.php', creds, options).map(res => res.json()).subscribe(data => this.data, err => console.error(err), () => console.log('Authentication Complete'));
   }
 
+  login(model) {
+    const email = model.email;
+    const password = model.password;
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    const creds = `email=${email}&password=${password}&appkey=12`;
+    this.http.post('http://test-api.evermight.com/login.php', creds, { headers }).map(res => res.json()).subscribe(data => this.data, err => console.error(err), () => console.log('Authentication Complete'));
+  }
+
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
 }
