@@ -5,6 +5,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { User } from './user';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import {Observable} from 'rxjs/Observable';
 // import { UserService } from './user.service';
 
 @Component({
@@ -38,6 +39,11 @@ export class UserFormComponent {
     this.model = new User('', '', '', '');
   }
 
+  private extractData(res: Response) {
+    let body = res.json();
+    return body.data || {};
+  }
+
   register(model) {
     const firstname = model.firstname;
     const lastname = model.lastname;
@@ -49,6 +55,8 @@ export class UserFormComponent {
     const creds = `firstname=${firstname}&lastname=${lastname}&email=${email}&password=${password}&appkey=12`;
 
     let options = new RequestOptions({ headers: headers });
+
+
     // const creds = `appkey="12"`;
     
     // this.http.post('http://test-api.evermight.com/register.php', JSON.stringify({
@@ -61,11 +69,14 @@ export class UserFormComponent {
     // }), { headers: headers }).subscribe((res: Response) => {
     //   this.data = res.json();
     // });
-    // this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).subscribe((res: Response) => {
-    //   this.data = res.json();
-    // });
+    // this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).subscribe((res: Response) => { this.data = res.json(); });
 
-    this.http.post('http://test-api.evermight.com/register.php', creds, options).map(res => res.json()).subscribe(data => this.data, err => console.error(err), () => console.log('Authentication Complete'));
+    // this.http.post('http://test-api.evermight.com/register.php', creds, options).map(res => res.json()).subscribe(err => this.data = err);
+    // console.log(`${this.data}`);
+
+    // this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).map(this.extractData);
+
+    this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).subscribe((res: Response) => { this.data = res.json(); });
   }
 
   login(model) {
@@ -74,7 +85,22 @@ export class UserFormComponent {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     const creds = `email=${email}&password=${password}&appkey=12`;
-    this.http.post('http://test-api.evermight.com/login.php', creds, { headers }).map(res => res.json()).subscribe(data => console.log(data), err => console.error(err), () => console.log('Authentication Complete'));
+    this.http.post('http://test-api.evermight.com/login.php', creds, { headers }).subscribe(data => {
+      console.log(data);
+    },
+      err => {
+        this.data = err._body;
+      });
+
+    // this.http.post('http://test-api.evermight.com/login.php', creds, { headers: headers }).map(res => {
+    //   if(res.status === 500) {
+    //     return res.json();
+    //   }
+    // }).subscribe(
+    //   (data) => this.data = data, // Reach here if res.status >= 200 && <= 299
+    //   (err) => this.data = err);
+
+    // this.http.post('http://test-api.evermight.com/login.php', creds, { headers: headers }).catch((res: Response) => this.data = res._body);
   }
 
   // get data() { return this.data }
