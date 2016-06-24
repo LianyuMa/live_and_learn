@@ -38,7 +38,6 @@ var UserFormComponent = (function () {
         return body.data || {};
     };
     UserFormComponent.prototype.register = function (model) {
-        var _this = this;
         var firstname = model.firstname;
         var lastname = model.lastname;
         var email = model.email;
@@ -47,23 +46,9 @@ var UserFormComponent = (function () {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         var creds = "firstname=" + firstname + "&lastname=" + lastname + "&email=" + email + "&password=" + password + "&appkey=12";
-        var options = new http_1.RequestOptions({ headers: headers });
-        // const creds = `appkey="12"`;
-        // this.http.post('http://test-api.evermight.com/register.php', JSON.stringify({
-        //   firstname: firstname,
-        //   lastname: lastname,
-        //   email: email,
-        //   password: password,
-        //   appkey: 12,
-        // // }), { headers: headers }).map(this.extractData).catch(this.handleError);
-        // }), { headers: headers }).subscribe((res: Response) => {
-        //   this.data = res.json();
-        // });
-        // this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).subscribe((res: Response) => { this.data = res.json(); });
-        // this.http.post('http://test-api.evermight.com/register.php', creds, options).map(res => res.json()).subscribe(err => this.data = err);
-        // console.log(`${this.data}`);
-        // this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).map(this.extractData);
-        this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers }).subscribe(function (res) { _this.data = res.json(); });
+        // let options = new RequestOptions({ headers: headers });
+        this.http.post('http://test-api.evermight.com/register.php', creds, { headers: headers })
+            .subscribe(function (data) { return console.log(data); }, function (err) { return console.warn(err); });
     };
     UserFormComponent.prototype.login = function (model) {
         var _this = this;
@@ -72,22 +57,10 @@ var UserFormComponent = (function () {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         var creds = "email=" + email + "&password=" + password + "&appkey=12";
-        this.http.post('http://test-api.evermight.com/login.php', creds, { headers: headers }).subscribe(function (data) {
-            console.log(data);
-        }, function (err) {
-            _this.data = err._body;
-        });
-        // this.http.post('http://test-api.evermight.com/login.php', creds, { headers: headers }).map(res => {
-        //   if(res.status === 500) {
-        //     return res.json();
-        //   }
-        // }).subscribe(
-        //   (data) => this.data = data, // Reach here if res.status >= 200 && <= 299
-        //   (err) => this.data = err);
-        // this.http.post('http://test-api.evermight.com/login.php', creds, { headers: headers }).catch((res: Response) => this.data = res._body);
+        this.http.post('http://test-api.evermight.com/login.php', creds, { headers: headers })
+            .subscribe(function (data) { console.log(data); }, function (err) { _this.data = err._body; });
     };
     Object.defineProperty(UserFormComponent.prototype, "diagnostic", {
-        // get data() { return this.data }
         // TODO: Remove this when we're done
         get: function () { return JSON.stringify(this.model); },
         enumerable: true,
