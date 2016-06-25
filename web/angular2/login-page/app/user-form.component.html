@@ -1,6 +1,6 @@
 <div class="container">
   <!-- Register User -->
-  <div [hidden]="submitted">
+  <div [hidden]="submitted||authorized">
     <h1>Register User</h1>
     <form *ngIf="active" (ngSubmit)="onSubmit()" #RegisterForm="ngForm">
       {{diagnostic}}
@@ -37,14 +37,14 @@
 
       <button type="button" class="btn btn-default" (click)="login(model)">Login for Test</button>
 
-      <!-- <pre>{{data}}aaa</pre> -->
-      <div>{{data}}</div>
+      <pre>{{data}}</pre>
+      <div>{{authorized}}</div>
 
     </form>
   </div>
 
   <!-- Login User -->
-  <div [hidden]="!submitted">
+  <div [hidden]="!submitted||authorized">
     <h1>Login User</h1>
     <form #RegisterForm="ngForm">
       <div class="form-group">
@@ -64,5 +64,9 @@
       <button class="btn btn-default" (click)="submitted=false;clearForm(model)">Go to Register</button>
 
     </form>
+  </div>
+
+  <div [hidden]="!authorized">
+      <h1>Hello world for {{model.firstname}}</h1>
   </div>
 </div>

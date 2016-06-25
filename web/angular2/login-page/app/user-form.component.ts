@@ -39,6 +39,8 @@ export class UserFormComponent {
     this.model = new User('', '', '', '');
   }
 
+  private authorized: Object;
+
   private extractData(res: Response) {
     let body = res.json();
     return body.data || {};
@@ -72,7 +74,7 @@ export class UserFormComponent {
     this.http.post('http://test-api.evermight.com/login.php', creds, { headers })
       .subscribe(
         data => { console.log(data); },
-        err => { this.data = err._body; }
+        err => { this.authorized = err._body; }
       );
   }
 
