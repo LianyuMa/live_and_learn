@@ -17,6 +17,8 @@ var CarsTableComponent = (function () {
         this.car = new car_1.Car('', '', '');
         this.getListUrl = 'http://test-api.evermight.com/listcar.php';
         this.addCarUrl = 'http://test-api.evermight.com/addcar.php';
+        this.deleteCarUrl = 'http://test-api.evermight.com/deletecar.php';
+        this.id = 41;
     }
     CarsTableComponent.prototype.newCar = function () {
         this.car = new car_1.Car('Lancer', '1992', '0');
@@ -36,6 +38,14 @@ var CarsTableComponent = (function () {
         var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new http_1.RequestOptions({ headers: headers });
         return this.http.post(this.addCarUrl, creds, options)
+            .subscribe(function (data) { return console.log(data); }, function (err) { return console.warn(err); });
+    };
+    CarsTableComponent.prototype.deleteCar = function (id) {
+        id = this.id;
+        var creds = "id=" + id + "&appkey=12";
+        var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post(this.deleteCarUrl, creds, options)
             .subscribe(function (data) { return console.log(data); }, function (err) { return console.warn(err); });
     };
     CarsTableComponent = __decorate([

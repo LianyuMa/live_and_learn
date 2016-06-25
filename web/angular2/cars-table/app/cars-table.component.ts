@@ -15,6 +15,9 @@ export class CarsTableComponent {
 
   private getListUrl = 'http://test-api.evermight.com/listcar.php';
   private addCarUrl = 'http://test-api.evermight.com/addcar.php';
+  private deleteCarUrl = 'http://test-api.evermight.com/deletecar.php';
+
+  id = 41;
 
   newCar() {
     this.car = new Car('Lancer', '1992', '0');
@@ -39,6 +42,18 @@ export class CarsTableComponent {
     let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     let options = new RequestOptions({ headers });
     return this.http.post(this.addCarUrl, creds, options)
+      .subscribe(
+        data => console.log(data),
+        err => console.warn(err)
+      );
+  }
+
+  deleteCar(id) {
+    id = this.id;
+    const creds = `id=${id}&appkey=12`;
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    let options = new RequestOptions({ headers });
+    return this.http.post(this.deleteCarUrl, creds, options)
       .subscribe(
         data => console.log(data),
         err => console.warn(err)
