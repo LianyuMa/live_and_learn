@@ -19,7 +19,10 @@ var CarsTableComponent = (function () {
         this.addCarUrl = 'http://test-api.evermight.com/addcar.php';
         this.deleteCarUrl = 'http://test-api.evermight.com/deletecar.php';
         this.id = 41;
+        this.submitted = false;
+        this.active = true;
     }
+    CarsTableComponent.prototype.onSubmit = function () { this.submitted = true; };
     CarsTableComponent.prototype.newCar = function () {
         this.car = new car_1.Car('Lancer', '1992', '0');
     };

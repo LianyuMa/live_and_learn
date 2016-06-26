@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/common';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 
 import { Car } from './car';
@@ -18,6 +19,12 @@ export class CarsTableComponent {
   private deleteCarUrl = 'http://test-api.evermight.com/deletecar.php';
 
   id = 41;
+
+  submitted = false;
+
+  onSubmit() { this.submitted = true }
+
+  active = true;
 
   newCar() {
     this.car = new Car('Lancer', '1992', '0');

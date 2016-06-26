@@ -4,3 +4,29 @@
 <button class="btn btn-default" (click)="addCar(car)">Add Car</button>
 
 <button class="btn btn-default" (click)="deleteCar(id)">Delete Car</button>
+
+<div>
+  <h2>Add Car</h2>
+  <form *ngIf="active" (ngSubmit)="onSubmit()" #AddCarForm="ngForm">
+    <div class="form-group">
+      <label for="model">Model</label>
+      <input type="text" class="form-control" required [(ngModel)]="car.model" ngControl="model" #model="ngForm" #spy />
+      <div [hidden]="model.valid || model.pristine" class="alert alert-danger">Model is required</div>
+    </div>
+
+    <div class="form-group">
+      <label for="model">Year</label>
+      <input type="number" class="form-control" required [(ngModel)]="car.year" ngControl="model" #year="ngForm" #spy />
+      <div [hidden]="model.valid || model.pristine" class="alert alert-danger">Year is required</div>
+    </div>
+
+    <div class="form-group">
+      <label for="model">Millage</label>
+      <input type="number" class="form-control" required [(ngModel)]="car.millage" ngControl="model" #millage="ngForm" #spy />
+      <div [hidden]="model.valid || model.pristine" class="alert alert-danger">Millage is required</div>
+    </div>
+
+    <button type="submit" class="btn btn-default" [disabled]="!AddCarForm.form.valid" (click)="addCar(car)">Submit</button>
+
+  </form>
+</div>
