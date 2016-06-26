@@ -10,7 +10,7 @@
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     'rxjs':                       'node_modules/rxjs',
     'ag-grid-ng2':                'node_modules/ag-grid-ng2',
-    'ag-grid':                'node_modules/ag-grid',
+    'ag-grid':                    'node_modules/ag-grid',
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -18,7 +18,7 @@
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
     'ag-grid-ng2':                { main: 'main.js', defaultExtension: 'js' },
-    'ag-grid':                { main: 'main.js', defaultExtension: 'js' }
+    'ag-grid':                    { main: 'main.js', defaultExtension: 'js' }
   };
   var ngPackageNames = [
     'common',
