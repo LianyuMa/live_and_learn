@@ -1,8 +1,22 @@
+<h1>Cars Table</h1>
 <button class="btn btn-default" (click)="getList()">Get List</button>
 
-<button class="btn btn-default" (click)="addCar(car)">Add Car</button>
+<hr>
 
-<button class="btn btn-default" (click)="deleteCar(id)">Delete Car</button>
+<ag-grid-ng2 class="ag-fresh" style="height: 200px; width: 810px" [rowGroupPanelShow]="always" [columnDefs]="columnDefs"  [rowData] = "rowData"></ag-grid-ng2>
+
+<div>
+  <h2>Delete Car</h2>
+  <form *ngIf="active" (ngSubmit)="onSubmit()" #AddCarForm="ngForm">
+    <div class="form-group">
+      <label for="model">ID</label>
+      <input type="number" class="form-control" required [(ngModel)]="id" ngControl="model" #model="ngForm" #spy />
+      <div [hidden]="model.valid || model.pristine" class="alert alert-danger">Valid id is required</div>
+    </div>
+
+    <button type="submit" class="btn btn-default" [disabled]="!AddCarForm.form.valid" (click)="deleteCar(id)">Submit</button>
+  </form>
+</div>
 
 <div>
   <h2>Add Car</h2>
