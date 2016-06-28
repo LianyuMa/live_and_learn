@@ -1,7 +1,5 @@
-// Argument of type 'number[]' is not assignable to parameter of type 'string'.
-// function greeter(person: string) {
 function greeter(person) {
-    return "Hello, " + person;
+    return "Hello, " + person.firstName + " " + person.lastName;
 }
-var user = [1, 2, 3];
+var user = { firstName: "Jane", lastName: "User" };
 document.body.innerHTML = greeter(user);
