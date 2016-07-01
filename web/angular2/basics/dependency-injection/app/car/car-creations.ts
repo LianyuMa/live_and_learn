@@ -21,3 +21,13 @@ export function superCar() {
   car.description = 'Super';
   return car;
 }
+
+class MockEngine extends Engine { cylinders = 8 }
+class MockTires extends Tires { make = 'YokoGoodStone' }
+
+export function testCar() {
+  // Test car with 8 cylinders and YokoGoodStone tires.
+  let car = new Car(new MockEngine(), new MockTires());
+  car.description = 'Test';
+  return car;
+}
