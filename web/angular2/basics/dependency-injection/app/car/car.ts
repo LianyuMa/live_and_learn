@@ -9,6 +9,7 @@ export class Tires {
   public model = "Square";
 }
 
+@Injectable()
 export class Car {
   public description = 'DI';
 

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 
 import { CarComponent } from './car/car.component';
 import { HeroesComponent } from './heroes/heroes.component';
+import { Logger } from './logger.service';
 
 @Component({
     selector: 'my-app',
@@ -10,6 +11,7 @@ import { HeroesComponent } from './heroes/heroes.component';
       <my-car></my-car>
       <my-heroes></my-heroes>
     `,
-    directives: [CarComponent, HeroesComponent]
+    directives: [CarComponent, HeroesComponent],
+    providers: [Logger]
 })
 export class AppComponent { }
