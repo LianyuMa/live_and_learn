@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { Car as CarNoDi } from './car-no-di';
 import { simpleCar, superCar, testCar } from './car-creations';
 import { CarFactory } from './car-factory';
+import { useInjector } from './car-injector';
+import { Car, Engine, Tires } from './car';
 
 @Component({
   selector: 'my-car',
@@ -13,7 +15,9 @@ import { CarFactory } from './car-factory';
     <div id="super">{{superCar.drive()}}</div>
     <div id="test">{{testCar.drive()}}</div>
     <div id="factory">{{factoryCar.drive()}}</div>
-`
+    <div id="injector">{{injectorCar.drive()}}</div>
+  `,
+  providers: [Car, Engine, Tires]
 })
 export class CarComponent {
   noDiCar = new CarNoDi;
@@ -21,4 +25,5 @@ export class CarComponent {
   superCar = superCar();
   testCar = testCar();
   factoryCar = (new CarFactory).createCar();
+  injectorCar = useInjector();
 }
