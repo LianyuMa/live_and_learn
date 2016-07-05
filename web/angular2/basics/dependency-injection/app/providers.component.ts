@@ -72,6 +72,36 @@ export class Provider4Component {
   }
 }
 
+// provider-5
+class NewLogger extends Logger { }
+class OldLogger {
+  logs: string[] = [];
+  log(message: string) {
+    throw new Error('Should not call the old logger!');
+  };
+}
+
+@Component({
+  selector: 'provider-5a',
+  template: template,
+  providers: [ NewLogger,
+    // Not aliased! Creates two instance of `NewLogger`
+    { provide: OldLogger, useClass: NewLogger }
+  ],
+})
+export class Provider5aComponent {
+  log: string;
+  constructor(newLogger: NewLogger, oldLogger: OldLogger) {
+    if(newLogger === oldLogger) {
+      throw new Error('expected the two loggers to be different instances');
+      oldLogger.log('Hello OldLogger (but we want NewLogger)');
+      // The newLogger wasn't called so no logs[]
+      // display the logs of the oldLogger.
+      this.log = newLogger.logs[0] || oldLogger.logs[0];
+    }
+  }
+}
+
 @Component({
   selector: 'my-providers',
   template: `
