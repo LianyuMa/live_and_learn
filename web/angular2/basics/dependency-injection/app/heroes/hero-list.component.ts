@@ -8,6 +8,7 @@ import { HeroService } from './hero.service';
   template: `
     <div *ngFor="let hero of heroes">
       {{hero.id}} - {{hero.name}}
+      ({{hero.isSecret ? 'secret' : 'public'}})
     </div>
   `
 })

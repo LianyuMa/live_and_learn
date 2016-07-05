@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { HeroListComponent } from './hero-list.component';
-import { HeroService } from './hero.service';
+// import { HeroService } from './hero.service';
+import { heroServiceProvider } from './hero.service.provider';
 
 @Component({
   selector: 'my-heroes',
@@ -9,7 +10,7 @@ import { HeroService } from './hero.service';
     <h2>Heroes</h2>
     <hero-list></hero-list>
   `,
-  providers: [HeroService],
+  providers: [heroServiceProvider],
   directives: [HeroListComponent]
 })
 
