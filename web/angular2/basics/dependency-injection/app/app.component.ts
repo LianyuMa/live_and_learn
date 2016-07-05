@@ -2,14 +2,17 @@ import { Component, Inject } from '@angular/core';
 
 import { CarComponent } from './car/car.component';
 import { HeroesComponent } from './heroes/heroes.component';
+
+import { APP_CONFIG, AppConfig, HERO_DI_CONFIG } from './app.config';
 import { Logger } from './logger.service';
+
 import { ProvidersComponent } from './providers.component';
 import { UserService } from './user.service';
 
 @Component({
     selector: 'my-app',
     template: `
-      <h1>Dependency Injection</h1>
+      <h1>{{title}}</h1>
       <my-car></my-car>
       <h2>User</h2>
       <p id="user">
@@ -20,10 +23,16 @@ import { UserService } from './user.service';
       <my-heroes id="unauthorized" *ngIf="!isAuthorized"></my-heroes>
     `,
     directives: [CarComponent, HeroesComponent, ProvidersComponent],
-    providers: [Logger, UserService]
+    // Can't use interface as provider token
+    providers: [Logger, UserService, { provide: APP_CONFIG, useValue: HERO_DI_CONFIG }]
 })
 export class AppComponent {
-  constructor(private userService: UserService) { }
+  title: string;
+
+  // Can't inject using the interface as the parameter type
+  constructor(@Inject(APP_CONFIG) config: AppConfig, private userService: UserService) {
+    this.title = config.title;
+  }
 
   get isAuthorized() { return this.user.isAuthorized; }
   nextUser() { this.userService.getNewUser(); }
