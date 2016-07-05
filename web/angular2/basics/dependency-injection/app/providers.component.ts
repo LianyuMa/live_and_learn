@@ -121,6 +121,26 @@ export class Provider5bComponent {
   }
 }
 
+// provider-6
+// An object in the shape of the logger service
+let silentLogger = {
+  logs: ['Silent logger says "Shhhhh!". Provided via "useValue"'],
+  log: () => {}
+};
+
+@Component({
+  selector: 'provider-6',
+  template: template,
+  providers: [{ provide: Logger, useValue: silentLogger }]
+})
+export class Provider6Component {
+  log: string;
+  constructor(logger: Logger) {
+    logger.log('Hello from logger provided with useValue');
+    this.log = logger.logs[0];
+  }
+}
+
 @Component({
   selector: 'my-providers',
   template: `
@@ -129,8 +149,9 @@ export class Provider5bComponent {
     <div id="p2"><provider-2></provider-2></div>
     <div id="p3"><provider-3></provider-3></div>
     <div id="p4"><provider-4></provider-4></div>
-    <div id="p5"><provider-5a></provider-5a></div>
-    <div id="p6"><provider-5b></provider-5b></div>
+    <div id="p5a"><provider-5a></provider-5a></div>
+    <div id="p5b"><provider-5b></provider-5b></div>
+    <div id="p6"><provider-6></provider-6></div>
   `,
   directives: [
     Provider1Component,
@@ -138,7 +159,8 @@ export class Provider5bComponent {
     Provider3Component,
     Provider4Component,
     Provider5aComponent,
-    Provider5bComponent
+    Provider5bComponent,
+    Provider6Component
   ],
 })
 export class ProvidersComponent { }
