@@ -4,6 +4,7 @@ import { Logger } from './logger.service';
 
 let template = '{{log}}';
 
+// provider-1
 @Component({
   selector: 'provider-1',
   template: template,
@@ -18,11 +19,28 @@ export class Provider1Component {
 }
 
 @Component({
+  selector: 'provider-2',
+  template: template,
+  providers: [{ provide: Logger, useClass: Logger }],
+})
+export class Provider2Component {
+  log: string;
+  constructor(logger: Logger) {
+    logger.log('Hello from logger provided with useClass:Logger');
+    this.log = logger.logs[0];
+  }
+}
+
+@Component({
   selector: 'my-providers',
   template: `
     <h2>Provider variations</h2>
     <div id="p1"><provider-1></provider-1></div>
+    <div id="p2"><provider-2></provider-2></div>
   `,
-  directives: [Provider1Component],
+  directives: [
+    Provider1Component,
+    Provider2Component
+  ],
 })
 export class ProvidersComponent { }
