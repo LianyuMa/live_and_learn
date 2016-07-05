@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 
 import { Logger } from './logger.service';
+import { UserService } from './user.service';
 
 let template = '{{log}}';
 
@@ -18,6 +19,7 @@ export class Provider1Component {
   }
 }
 
+// provider-2
 @Component({
   selector: 'provider-2',
   template: template,
@@ -31,16 +33,59 @@ export class Provider2Component {
   }
 }
 
+// provider-3
+class BetterLogger extends Logger {}
+
+@Component({
+  selector: 'provider-3',
+  template: template,
+  providers: [{ provide: Logger, useClass: BetterLogger }],
+})
+export class Provider3Component {
+  log: string;
+  constructor(logger: Logger) {
+    logger.log('Hello from logger provided with useClass:BetterLogger');
+    this.log = logger.logs[0];
+  }
+}
+
+// provider-4
+@Injectable()
+class EvenBetterLogger extends Logger {
+  constructor(private userService: UserService) { super(); }
+
+  log(message: string) {
+    let name = this.userService.user.name;
+    super.log(`Message to ${name}: ${message}`);
+  }
+}
+@Component({
+  selector: 'provider-4',
+  template: template,
+  providers: [UserService, { provide: Logger, useClass: EvenBetterLogger }],
+})
+export class Provider4Component {
+  log: string;
+  constructor(logger: Logger) {
+    logger.log('Hello from EvenBetterLogger');
+    this.log = logger.logs[0];
+  }
+}
+
 @Component({
   selector: 'my-providers',
   template: `
     <h2>Provider variations</h2>
     <div id="p1"><provider-1></provider-1></div>
     <div id="p2"><provider-2></provider-2></div>
+    <div id="p3"><provider-3></provider-3></div>
+    <div id="p4"><provider-4></provider-4></div>
   `,
   directives: [
     Provider1Component,
-    Provider2Component
+    Provider2Component,
+    Provider3Component,
+    Provider4Component
   ],
 })
 export class ProvidersComponent { }
