@@ -94,11 +94,30 @@ export class Provider5aComponent {
   constructor(newLogger: NewLogger, oldLogger: OldLogger) {
     if(newLogger === oldLogger) {
       throw new Error('expected the two loggers to be different instances');
-      oldLogger.log('Hello OldLogger (but we want NewLogger)');
-      // The newLogger wasn't called so no logs[]
-      // display the logs of the oldLogger.
-      this.log = newLogger.logs[0] || oldLogger.logs[0];
     }
+    oldLogger.log('Hello OldLogger (but we want NewLogger)');
+    // The newLogger wasn't called so no logs[]
+    // display the logs of the oldLogger.
+    this.log = newLogger.logs[0] || oldLogger.logs[0]; 
+  }
+}
+
+// provider-5b
+@Component({
+  selector: 'provider-5b',
+  template: template,
+  providers: [ NewLogger,
+    // Alias OldLogger w/ reference to NewLogger
+    { provide: OldLogger, useExisting: NewLogger }]
+})
+export class Provider5bComponent {
+  log: string;
+  constructor(newLogger: NewLogger, oldLogger: OldLogger) {
+    if(newLogger !== oldLogger) {
+      throw new Error('expected the two loggers to be the same instance');
+    }
+    oldLogger.log('Hello from NewLogger (via aliased OldLogger)');
+    this.log = newLogger.logs[0];
   }
 }
 
@@ -110,12 +129,16 @@ export class Provider5aComponent {
     <div id="p2"><provider-2></provider-2></div>
     <div id="p3"><provider-3></provider-3></div>
     <div id="p4"><provider-4></provider-4></div>
+    <div id="p5"><provider-5a></provider-5a></div>
+    <div id="p6"><provider-5b></provider-5b></div>
   `,
   directives: [
     Provider1Component,
     Provider2Component,
     Provider3Component,
-    Provider4Component
+    Provider4Component,
+    Provider5aComponent,
+    Provider5bComponent
   ],
 })
 export class ProvidersComponent { }
