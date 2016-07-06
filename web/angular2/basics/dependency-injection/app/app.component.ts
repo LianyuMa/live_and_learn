@@ -9,12 +9,14 @@ import { Logger } from './logger.service';
 import { ProvidersComponent } from './providers.component';
 import { UserService } from './user.service';
 import { TestComponent } from './test.component';
+import { InjectorComponent } from './injector.component';
 
 @Component({
     selector: 'my-app',
     template: `
       <h1>{{title}}</h1>
       <my-car></my-car>
+      <my-injectors></my-injectors>
       <my-tests></my-tests>
       <h2>User</h2>
       <p id="user">
@@ -24,7 +26,7 @@ import { TestComponent } from './test.component';
       <my-heroes id="authorized" *ngIf="isAuthorized"></my-heroes>
       <my-heroes id="unauthorized" *ngIf="!isAuthorized"></my-heroes>
     `,
-    directives: [CarComponent, HeroesComponent, ProvidersComponent, TestComponent],
+    directives: [CarComponent, HeroesComponent, ProvidersComponent, TestComponent, InjectorComponent],
     // Can't use interface as provider token
     providers: [Logger, UserService, { provide: APP_CONFIG, useValue: HERO_DI_CONFIG }]
 })

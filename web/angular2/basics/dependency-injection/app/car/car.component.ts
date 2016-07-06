@@ -16,6 +16,7 @@ import { Car, Engine, Tires } from './car';
     <div id="test">{{testCar.drive()}}</div>
     <div id="factory">{{factoryCar.drive()}}</div>
     <div id="injector">{{injectorCar.drive()}}</div>
+    <div id="di">{{car.drive()}}</div>
   `,
   providers: [Car, Engine, Tires]
 })
@@ -26,4 +27,6 @@ export class CarComponent {
   testCar = testCar();
   factoryCar = (new CarFactory).createCar();
   injectorCar = useInjector();
+
+  constructor(public car: Car) { }
 }
