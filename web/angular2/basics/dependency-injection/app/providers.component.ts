@@ -1,7 +1,11 @@
-import { Component, Injectable } from '@angular/core';
+import { Component, Injectable, OnInit, Inject } from '@angular/core';
+
+import { APP_CONFIG, AppConfig, HERO_DI_CONFIG } from './app.config';
 
 import { Logger } from './logger.service';
 import { UserService } from './user.service';
+import { heroServiceProvider } from './heroes/hero.service.provider';
+import { HeroService } from './heroes/hero.service';
 
 let template = '{{log}}';
 
@@ -141,6 +145,61 @@ export class Provider6Component {
   }
 }
 
+// provider-7
+@Component({
+  selector: 'provider-7',
+  template: template,
+  providers: [heroServiceProvider, Logger, UserService]
+})
+export class Provider7Component {
+  // must be true else this component would have blown up at runtime
+  log = 'Hero service injected successfully via heroServiceProvider';
+
+  constructor(heroService: HeroService) {}
+}
+
+// provider-8
+@Component({
+  selector: 'provider-8',
+  template: template,
+  // FAIL! Can't use interface as provider token
+  // providers: [{ provide: AppConfig, useValue: HERO_DI_CONFIG}]
+  providers: [{ provide: APP_CONFIG, useValue: HERO_DI_CONFIG }]
+})
+export class Provider8Component implements OnInit {
+  log: string;
+  // FAIL! Can't inject using the interface as the parameter type
+  // constructor(private config: AppConfig) {}
+  constructor(@Inject(APP_CONFIG) private config: AppConfig) {}
+
+  ngOnInit() {
+    this.log = 'APP_CONFIG Application title is ' + this.config.title;
+  }
+}
+
+// Sample procider 1 to 6 illustrate a required logger dependency.
+// provider-9: Optional logger, can be null
+import { Optional } from '@angular/core';
+
+let some_message = 'Hello from the injected logger';
+
+@Component({
+  selector: 'provider-9',
+  template: template,
+})
+export class Provider9Component implements OnInit {
+  log: string;
+  constructor(@Optional() private logger: Logger) {
+    if(this.logger) {
+      this.logger.log(some_message);
+    }
+  }
+
+  ngOnInit() {
+    this.log = this.logger ? this.logger.logs[0] : 'Optional logger was not available';
+  }
+}
+
 @Component({
   selector: 'my-providers',
   template: `
@@ -152,6 +211,9 @@ export class Provider6Component {
     <div id="p5a"><provider-5a></provider-5a></div>
     <div id="p5b"><provider-5b></provider-5b></div>
     <div id="p6"><provider-6></provider-6></div>
+    <div id="p7"><provider-7></provider-7></div>
+    <div id="p8"><provider-8></provider-8></div>
+    <div id="p9"><provider-9></provider-9></div>
   `,
   directives: [
     Provider1Component,
@@ -160,7 +222,10 @@ export class Provider6Component {
     Provider4Component,
     Provider5aComponent,
     Provider5bComponent,
-    Provider6Component
+    Provider6Component,
+    Provider7Component,
+    Provider8Component,
+    Provider9Component
   ],
 })
 export class ProvidersComponent { }
