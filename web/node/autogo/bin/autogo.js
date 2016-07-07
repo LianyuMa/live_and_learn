@@ -9,5 +9,6 @@ program
   .parse(process.argv);
 
 var pname = program.args[0]
+if (!pname) program.help();
 
 gs(pname);
