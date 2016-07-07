@@ -1,4 +1,4 @@
-var Promise = require('bluebird'),
+var Promise = require('bluebird');
 var fs = Promise.promisifyAll(require('fs-extra'));
 
 function del(project, files) {
@@ -7,7 +7,7 @@ function del(project, files) {
   });
 }
 
-function delFile(profile, files) {
+function delFile(project, files) {
   return Promise.all([del(project, files)]);
 }
 
