@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'my-zippy',
@@ -6,6 +6,8 @@ import { Component } from '@angular/core';
 })
 
 export class ZippyComponent {
+  @Input() title: string;
+
   visible:boolean = true;
 
   toggle() {

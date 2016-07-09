@@ -1,7 +1,7 @@
 
 describe('QuickStart E2E Tests', function () {
 
-  let expectedMsg = 'My First Angular 2 App';
+  let expectedMsg = 'This is some content.';
 
 
   beforeEach(function () {
@@ -9,7 +9,7 @@ describe('QuickStart E2E Tests', function () {
   });
 
   it('should display: ' + expectedMsg, function () {
-    expect(element(by.css('h1')).getText()).toEqual(expectedMsg);
+    expect(element(by.css('div class="zippy__content"')).getText()).toEqual(expectedMsg);
   });
 
 });
