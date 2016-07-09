@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
 })
 
 export class ZippyComponent {
+  visible:boolean = true;
 
+  toggle() {
+    this.visible = !this.visible;
+  }
 }
