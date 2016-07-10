@@ -1,7 +1,7 @@
 import { ContactsListComponent } from './contacts-list.component';
 import { ContactsDetailComponent } from './contacts-detail.component';
 
-export const ContactsAppRoutes = [
+export const ContactsRoutes = [
   { path: '', component: ContactsListComponent },
   { path: 'contacts/:id', component: ContactsDetailComponent }
 ];

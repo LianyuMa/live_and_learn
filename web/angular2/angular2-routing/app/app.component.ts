@@ -4,7 +4,7 @@ import { ContactsDetailComponent } from './contacts-detail.component';
 
 @Component({
     selector: 'my-app',
-    template: '<h1>Angular 2 Routing</h1><contacts-list></contacts-list><contacts-detail></contacts-detail>',
+    template: `<contacts-app><contacts-app>`,
     directives: [ContactsListComponent, ContactsDetailComponent]
 })
 export class AppComponent { }
