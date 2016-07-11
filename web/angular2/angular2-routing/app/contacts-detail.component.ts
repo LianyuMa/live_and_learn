@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'contacts-detail',
@@ -13,4 +14,8 @@ import { Component } from '@angular/core';
     </address>
   `
 })
-export class ContactsDetailComponent { }
+export class ContactsDetailComponent {
+  constructor(private route: ActivatedRoute) {
+    
+  }
+}

@@ -3,10 +3,5 @@ import { ContactsDetailComponent } from './contacts-detail.component';
 
 export const ContactsRoutes = [
   { path: '', component: ContactsListComponent },
-  { path: 'contacts/:id', component: ContactsDetailComponent }
+  { path: 'contact/:id', component: ContactsDetailComponent }
 ];
-
-// interface Route {
-//   path?: string;
-//   component?: Type|string;
-// }
