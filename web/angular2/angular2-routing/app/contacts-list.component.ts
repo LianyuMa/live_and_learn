@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { ContactsService } from './contacts.service';
 import { Contact } from './contact.model';
@@ -17,4 +17,12 @@ import { Contact } from './contact.model';
   `,
   directives: [ROUTER_DIRECTIVES]
 })
-export class ContactsListComponent { }
+export class ContactsListComponent implements OnInit{
+  contacts: Contact[];
+
+  constructor(private contactsService: ContactsService) {}
+
+  ngOnInit() {
+    this.contacts = this.contactsService.getContacts();
+  }
+}
