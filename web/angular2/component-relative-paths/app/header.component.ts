@@ -2,12 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'contacts-header',
-  template: `
-    <nav class="navbar-fixed">
-      <span class="brand-logo center">Contacts</span>
-    </nav>
-  `,
-  styles: ['.navbar-fixed { position:fixed; }']
+  templateUrl: 'app/header.component.html',
+  styleUrls: ['app/header.component.css'] 
 })
 export class HeaderComponent implements OnInit {
   ngOnInit() {}
