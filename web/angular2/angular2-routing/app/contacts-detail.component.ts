@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ContactsService } from './contacts.service';
+import { Contact } from './contact.model';
 
 @Component({
   selector: 'contacts-detail',
   template: `
     <h2>{{contact.name}}</h2>
-
-    <address>
-      <span>{{contact.street}}</span>
-      <span>{{contact.zip}}</span>
-      <span>{{contact.city}}</span>
-      <span>{{contact.counrty}}</span>
-    </address>
   `
 })
-export class ContactsDetailComponent {
-  constructor(private route: ActivatedRoute) {
-    
+export class ContactsDetailComponent implements OnInit {
+  contact: Contact;
+
+  constructor(private route: ActivatedRoute, private contactsService: ContactsService) {
+
+  }
+
+  ngOnInit() {
+    this.contact = this.contactsService.getContact(this.route.snapshot.params['id']);
   }
 }

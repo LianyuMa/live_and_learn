@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { ContactsListComponent } from './contacts-list.component';
 import { ContactsDetailComponent } from './contacts-detail.component';
+import { ContactsService } from './contacts.service';
 
 @Component({
    selector: 'my-app',
@@ -12,6 +13,7 @@ import { ContactsDetailComponent } from './contacts-detail.component';
     </ul>
     <router-outlet></router-outlet>
    `,
-   directives: [ROUTER_DIRECTIVES]
+   directives: [ROUTER_DIRECTIVES],
+   providers: [ContactsService]
 })
 export class AppComponent { }
