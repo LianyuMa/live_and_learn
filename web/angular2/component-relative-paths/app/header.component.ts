@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'contacts-header',
-  templateUrl: 'app/header.component.html',
-  styleUrls: ['app/header.component.css'] 
+  templateUrl: 'header.component.html',
+  styleUrls: ['header.component.css'] 
 })
 export class HeaderComponent implements OnInit {
   ngOnInit() {}
