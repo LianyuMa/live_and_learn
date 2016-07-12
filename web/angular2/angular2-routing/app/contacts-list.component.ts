@@ -9,7 +9,7 @@ import { Contact } from './contact.model';
     <h2>Contacts</h2>
     <ul>
       <li *ngFor="let contact of contacts | async">
-        <a [routerLink]="['/contacts', contact.id]">
+        <a [routerLink]="['/contact', contact.id]">
           {{contact.name}}
         </a>
       </li>
