@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+// import { DraggableComponent } from './draggable.component';
 
 @Component({
     selector: 'my-app',
     template: `
       <h1>Template Driven Forms</h1>
-      <form>
+      <form #form="ngForm">
         <label>Firstname:</label>
         <input type="text">
 
@@ -22,6 +23,8 @@ import { Component } from '@angular/core';
 
         <button type="submit">Submit</button>
       </form>
-    `
+      <div draggable #myDraggable="draggable">I'm draggable!</div>
+    `,
+    // directives: [DraggableComponent]
 })
 export class AppComponent { }
