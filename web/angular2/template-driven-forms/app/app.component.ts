@@ -8,10 +8,12 @@ import { Component } from '@angular/core';
       <form #form="ngForm" (ngSubmit)="logForm(form.value)">
         <fieldset ngModelGroup="name">
           <label>Firstname:</label>
-          <input type="text" name="firstname" ngModel>
+          <input type="text" name="firstname" [(ngModel)]="firstname">
+          <p>You entered {{firstname}}</p>
 
           <label>Lastname:</label>
-          <input type="text" name="lastname" ngModel>
+          <input type="text" name="lastname" [(ngModel)]="lastname">
+          <p>You entered {{lastname}}</p>
         </fieldset>
 
         <fieldset ngModelGroup="address">
@@ -31,6 +33,9 @@ import { Component } from '@angular/core';
     // directives: [DraggableComponent]
 })
 export class AppComponent {
+  firstname = 'Pascal';
+  lastname = 'Precht';
+
   logForm(value: any) {
     console.log(value);
   }
