@@ -7,23 +7,22 @@ import { Component } from '@angular/core';
       <h1>Template Driven Forms</h1>
       <form #form="ngForm" (ngSubmit)="logForm(form.value)">
         <label>Firstname:</label>
-        <input type="text">
+        <input type="text" name="firstname" ngModel>
 
         <label>Firstname:</label>
-        <input type="text">
+        <input type="text" name="lastname" ngModel>
 
         <label>Street:</label>
-        <input type="text">
+        <input type="text" name="street" ngModel>
 
         <label>Zip:</label>
-        <input type="text">
+        <input type="text" name="zip" ngModel>
 
         <label>City:</label>
-        <input type="text">
+        <input type="text" name="city" ngModel>
 
         <button type="submit">Submit</button>
       </form>
-      <div draggable #myDraggable="draggable">I'm draggable!</div>
     `,
     // directives: [DraggableComponent]
 })
