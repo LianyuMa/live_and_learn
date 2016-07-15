@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
     selector: 'my-app',
     template: `
       <h1>Template Driven Forms</h1>
-      <form #form="ngForm">
+      <form #form="ngForm" (ngSubmit)="logForm(form.value)">
         <label>Firstname:</label>
         <input type="text">
 
@@ -27,4 +27,8 @@ import { Component } from '@angular/core';
     `,
     // directives: [DraggableComponent]
 })
-export class AppComponent { }
+export class AppComponent {
+  logForm(value: any) {
+    console.log(value);
+  }
+}
