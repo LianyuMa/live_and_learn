@@ -6,20 +6,24 @@ import { Component } from '@angular/core';
     template: `
       <h1>Template Driven Forms</h1>
       <form #form="ngForm" (ngSubmit)="logForm(form.value)">
-        <label>Firstname:</label>
-        <input type="text" name="firstname" ngModel>
+        <fieldset ngModelGroup="name">
+          <label>Firstname:</label>
+          <input type="text" name="firstname" ngModel>
 
-        <label>Firstname:</label>
-        <input type="text" name="lastname" ngModel>
+          <label>Lastname:</label>
+          <input type="text" name="lastname" ngModel>
+        </fieldset>
 
-        <label>Street:</label>
-        <input type="text" name="street" ngModel>
+        <fieldset ngModelGroup="address">
+          <label>Street:</label>
+          <input type="text" name="street" ngModel>
 
-        <label>Zip:</label>
-        <input type="text" name="zip" ngModel>
+          <label>Zip:</label>
+          <input type="text" name="zip" ngModel>
 
-        <label>City:</label>
-        <input type="text" name="city" ngModel>
+          <label>City:</label>
+          <input type="text" name="city" ngModel>
+        </fieldset>
 
         <button type="submit">Submit</button>
       </form>
