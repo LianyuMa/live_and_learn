@@ -4,4 +4,4 @@ import { AppComponent } from './app.component';
 import { WikipediaService } from './wikipedia.service';
 import { JSONP_PROVIDERS } from '@angular/http';
 
-bootstrap(AppComponent, [WikipediaService, JSONP_PROVIDERS]);
+bootstrap(AppComponent, [WikipediaService, JSONP_PROVIDERS]).catch(err => console.error(err));

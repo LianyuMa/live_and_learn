@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { WikipediaService } from './wikipedia.service';
+import { Control } from '@angular/common';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/debounceTime';
+
+import { WikipediaService } from './wikipedia.service';
 
 @Component({
     selector: 'my-app',
@@ -9,8 +12,12 @@ import 'rxjs/add/operator/toPromise';
 })
 export class AppComponent {
   items: Array<string>;
-  constructor(private wikipediaService: WikipediaService) {}
-  search(term: any) {
-    this.wikipediaService.search(term).then(items => this.items = items);
+  term = new Control();
+  constructor(private wikipediaService: WikipediaService) {
+    this.term.valueChanges.debounceTime(400)
+      .subscribe(term => this.wikipediaService.search(term).then(items => this.items = items));
   }
+  // search(term: any) {
+  //   this.wikipediaService.search(term).then(items => this.items = items);
+  // }
 }
