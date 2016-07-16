@@ -1,7 +1,7 @@
 <div>
   <h1>Wikipedia Search</h1>
-  <input type="text" [ngFormControl]="term">
+  <input type="text" [ngFormControl]="term" />
   <ul>
-    <li *ngFor="let item of items">{{item}}</li>
+    <li *ngFor="let item of items | async">{{item}}</li>
   </ul>
 </div>

@@ -3,8 +3,13 @@ import { Control } from '@angular/common';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs/Observable';
+import { enableProdMode } from '@angular/core';
 
 import { WikipediaService } from './wikipedia.service';
+
+enableProdMode();
 
 @Component({
     selector: 'my-app',
@@ -12,11 +17,11 @@ import { WikipediaService } from './wikipedia.service';
     providers: [WikipediaService],
 })
 export class AppComponent {
-  items: Array<string>;
+  items: Observable<Array<string>>;
   term = new Control();
   constructor(private wikipediaService: WikipediaService) {
     this.term.valueChanges.debounceTime(400).distinctUntilChanged()
-      .subscribe(term => this.wikipediaService.search(term).then(items => this.items = items));
+      .switchMap(term => this.wikipediaService.search(term));
   }
   // search(term: any) {
   //   this.wikipediaService.search(term).then(items => this.items = items);
