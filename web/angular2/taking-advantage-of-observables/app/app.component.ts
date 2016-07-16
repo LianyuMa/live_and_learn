@@ -20,8 +20,7 @@ export class AppComponent {
   items: Observable<Array<string>>;
   term = new Control();
   constructor(private wikipediaService: WikipediaService) {
-    this.term.valueChanges.debounceTime(400).distinctUntilChanged()
-      .switchMap(term => this.wikipediaService.search(term));
+    this.items =  wikipediaService.search(this.term.valueChanges);
   }
   // search(term: any) {
   //   this.wikipediaService.search(term).then(items => this.items = items);
