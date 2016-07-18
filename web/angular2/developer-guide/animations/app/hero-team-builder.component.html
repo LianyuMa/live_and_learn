@@ -1,17 +1,22 @@
-    <div class="buttons">
-      <button [disabled]="!heroes.canAdd()" (click)="heroes.addInactive()">Add inactive hero</button>
-      <button [disabled]="!heroes.canAdd()" (click)="heroes.addActive()">Add active</button>
-      <button [disabled]="!heroes.canRemove()" (click)="heroes.remove()">Remove hero</button>
-    </div>
-    <div class="columns">
-      <div class="column">
-        <h4>Basic State</h4>
-        <p>Switch between active/inactive on click.</p>
-        <hero-list-basic [heroes]=heroes></hero-list-basic>
-      </div>
-      <div class="column">
-        <h4>Styles inline in transitions</h4>
-        <p>Animated effect on click, no persistend end styles.</p>
-        <hero-list-inline-styles [heroes]=heroes></hero-list-inline-styles>
-      </div>
-    </div>
+<div class="buttons">
+  <button [disabled]="!heroes.canAdd()" (click)="heroes.addInactive()">Add inactive hero</button>
+  <button [disabled]="!heroes.canAdd()" (click)="heroes.addActive()">Add active</button>
+  <button [disabled]="!heroes.canRemove()" (click)="heroes.remove()">Remove hero</button>
+</div>
+<div class="columns">
+  <div class="column">
+    <h4>Basic State</h4>
+    <p>Switch between active/inactive on click.</p>
+    <hero-list-basic [heroes]=heroes></hero-list-basic>
+  </div>
+  <div class="column">
+    <h4>Styles inline in transitions</h4>
+    <p>Animated effect on click, no persistend end styles.</p>
+    <hero-list-inline-styles [heroes]=heroes></hero-list-inline-styles>
+  </div>
+  <div class="column">
+    <h4>Combined transition syntax</h4>
+    <p>Switch between active/inactive on click. Define just one transition used in both directions.</p>
+    <hero-list-combined-transitions [heroes]=heroes></hero-list-combined-transitions>
+  </div>
+</div>

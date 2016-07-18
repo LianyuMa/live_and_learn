@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Heroes } from './hero.service';
 import { HeroListBasicComponent } from './hero-list-basic.component';
 import { HeroListInlineStylesComponent } from './hero-list-inline-styles.component';
+import { HeroListCombinedTransitionsComponent } from './hero-list-combined-transitions.component';
 
 @Component({
   moduleId: module.id,
@@ -11,7 +12,8 @@ import { HeroListInlineStylesComponent } from './hero-list-inline-styles.compone
   styleUrls: [`hero-team-builder.component.css`],
   directives: [
     HeroListBasicComponent,
-    HeroListInlineStylesComponent
+    HeroListInlineStylesComponent,
+    HeroListCombinedTransitionsComponent
   ],
   providers: [Heroes]
 })
