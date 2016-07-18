@@ -4,6 +4,7 @@ import { Heroes } from './hero.service';
 import { HeroListBasicComponent } from './hero-list-basic.component';
 import { HeroListInlineStylesComponent } from './hero-list-inline-styles.component';
 import { HeroListCombinedTransitionsComponent } from './hero-list-combined-transitions.component';
+import { HeroLIstTwowayComponent } from './hero-list-twoway.component';
 
 @Component({
   moduleId: module.id,
@@ -13,7 +14,8 @@ import { HeroListCombinedTransitionsComponent } from './hero-list-combined-trans
   directives: [
     HeroListBasicComponent,
     HeroListInlineStylesComponent,
-    HeroListCombinedTransitionsComponent
+    HeroListCombinedTransitionsComponent,
+    HeroLIstTwowayComponent
   ],
   providers: [Heroes]
 })
