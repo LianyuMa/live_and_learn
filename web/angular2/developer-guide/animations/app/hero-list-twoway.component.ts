@@ -29,6 +29,6 @@ import { Heroes } from './hero.service';
       ])
   ]
 })
-export class HeroLIstTwowayComponent {
+export class HeroListTwowayComponent {
   @Input() heroes: Heroes;
 }
