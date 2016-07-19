@@ -9,6 +9,7 @@ import { HeroListEnterLeaveComponent } from './hero-list-enter-leave.component';
 import { HeroListEnterLeaveStatesComponent } from './hero-list-enter-leave-states.component';
 import { HeroListAutoComponent } from './hero-list-auto.component';
 import { HeroListTimingsComponent } from './hero-list-timings.component';
+import { HeroListMultistepComponent } from './hero-list-multistep.component';
 
 @Component({
   moduleId: module.id,
@@ -23,7 +24,8 @@ import { HeroListTimingsComponent } from './hero-list-timings.component';
     HeroListEnterLeaveComponent,
     HeroListEnterLeaveStatesComponent,
     HeroListAutoComponent,
-    HeroListTimingsComponent
+    HeroListTimingsComponent,
+    HeroListMultistepComponent
   ],
   providers: [Heroes]
 })
