@@ -7,6 +7,7 @@ import { HeroListCombinedTransitionsComponent } from './hero-list-combined-trans
 import { HeroListTwowayComponent } from './hero-list-twoway.component';
 import { HeroListEnterLeaveComponent } from './hero-list-enter-leave.component';
 import { HeroListEnterLeaveStatesComponent } from './hero-list-enter-leave-states.component';
+import { HeroListAutoComponent } from './hero-list-auto.component';
 
 @Component({
   moduleId: module.id,
