@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var passportLinkedIn = require('../auth/linkedin')
+
+var passportLinkedIn = require('../auth/linkedin');
+var passportGithub = require('../auth/github');
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -17,6 +19,15 @@ router.get('/auth/linkedin/callback',
   function(req, res) {
     // Successful authentication
     res.json(req.user);
-  });
+  }
+);
+
+router.get('/auth/github', passportGithub.authenticate('github', { scope: [ 'user:email' ]}));
+router.get('/auth/github/callback', passportGithub.authenticate('github', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication
+    res.json(req.user);
+  }
+);
 
 module.exports = router;
