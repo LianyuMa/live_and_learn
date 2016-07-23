@@ -3,7 +3,7 @@ var LinkedInStrategy = require('passport-linkedin');
 
 var User = require('../models/user');
 var config = require('../_config');
-var init = require('../init');
+var init = require('./init');
 
 passport.use(new LinkedInStrategy({
     consumerKey: config.linkedin.clientID,
