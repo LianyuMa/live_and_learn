@@ -1,6 +1,7 @@
 {
-  "name": "_example",
+  "name": "passport-social-express4",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "start": "node ./server/bin/www"
   },
@@ -18,5 +19,9 @@
     "passport-twitter": "^1.0.4",
     "serve-favicon": "^2.3.0",
     "swig": "^1.4.2"
-  }
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
