@@ -10,7 +10,7 @@
     "noImplicitAny": false,
     "sourceMap": true
   },
-  "fileGlob": [
+  "filesGlob": [
     "client/**/*.ts",
     "server/**/*.ts",
     "typings/**/*.d.ts"
