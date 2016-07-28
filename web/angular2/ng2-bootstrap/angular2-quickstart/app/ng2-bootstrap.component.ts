@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertComponent, DATEPICKER_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstrap';
+import { AlertComponent, DATEPICKER_DIRECTIVES } from '../node_modules/ng2-bootstrap/ng2-bootstrap';
 
 @Component({
   moduleId: module.id,
@@ -9,6 +9,6 @@ import { AlertComponent, DATEPICKER_DIRECTIVES } from 'ng2-bootstrap/ng2-bootstr
     AlertComponent, DATEPICKER_DIRECTIVES
   ]
 })
-export class Ng2Bootstrap {
+export class Ng2BootstrapComponent {
   date: Date = new Date();
 }
