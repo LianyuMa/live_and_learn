@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
+import { UploadComponent } from './upload.component';
 
 @Component({
-    selector: 'my-app',
-    template: '<h1>My First Angular 2 App</h1>'
+  moduleId: module.id,
+  selector: 'my-app',
+  templateUrl: 'app.component.html',
+  directives: [UploadComponent]
 })
 export class AppComponent { }
