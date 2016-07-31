@@ -54,13 +54,13 @@ class App extends Component {
 
     return (
       <div className="previewComponent">
+        <div className="imgPreview">
+          {$imagePreview}
+        </div>
         <form onSubmit={(e)=>this._handleSubmit(e)}>
           <input className="fileInput" type="file" onChange={(e)=>this._handleImageChange(e)} />
           <button className="submitButton" type="submit" onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
         </form>
-        <div className="imgPreview">
-          {$imagePreview}
-        </div>
       </div>
     )
   }
