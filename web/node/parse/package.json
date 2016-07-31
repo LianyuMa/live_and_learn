@@ -1,0 +1,19 @@
+{
+  "name": "parse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "parse.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "atob": "^2.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^3.2.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-react": "^5.2.2"
+  }
+}
