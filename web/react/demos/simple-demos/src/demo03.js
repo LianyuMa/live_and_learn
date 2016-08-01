@@ -7,9 +7,7 @@ const arr = [
 
 class Demo03 extends Component {
   render() {
-    return(
-      <div>{arr}</div>
-    )
+    return <div>{arr}</div>;
   }
 }
 

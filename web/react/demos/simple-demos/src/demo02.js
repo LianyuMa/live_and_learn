@@ -10,7 +10,7 @@ class Demo02 extends Component {
         names.map((name) => <div>Hello, {name}!</div>)
       }
       </div>
-    )
+    );
   }
 }
 
