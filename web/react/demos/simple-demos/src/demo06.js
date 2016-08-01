@@ -8,10 +8,10 @@ class Demo06 extends Component {
 
 Demo06.propTypes = {
   title : React.PropTypes.string.isRequired,
-}
+};
 
 Demo06.defaultProps = {
   title: 'PropTypes',
-}
+};
 
 export default Demo06;
