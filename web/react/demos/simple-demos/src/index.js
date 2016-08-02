@@ -10,6 +10,7 @@ import Demo05 from './demo05';
 import Demo06 from './demo06';
 import Demo07 from './demo07';
 import Demo08 from './demo08';
+import Demo09 from './demo09';
 import './index.css';
 
 ReactDOM.render(
@@ -23,6 +24,7 @@ ReactDOM.render(
     <Demo06 />
     <Demo07 />
     <Demo08 />
+    <Demo09 />
   </div>,
   document.getElementById('root')
 );

@@ -17,7 +17,7 @@ class Demo08 extends Component {
   }
 
   render() {
-    var text = this.state.liked ? 'like' : 'haven\'t liked';
+    const text = this.state.liked ? 'like' : 'haven\'t liked';
     return (
       <p onClick={this.handleClick.bind(this)}>
         You {text} this. Click to toggle.
