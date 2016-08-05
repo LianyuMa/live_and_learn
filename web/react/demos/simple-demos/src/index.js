@@ -31,7 +31,7 @@ ReactDOM.render(
     <Demo09 />
     <Demo10 />
     <Demo11 />
-    <Demo12><RepoList promise={$.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars')} /></Demo12>
+    <Demo12 promise={$.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars')}></Demo12>
   </div>,
   document.getElementById('root')
 );
