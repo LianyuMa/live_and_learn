@@ -7,4 +7,3 @@ import _app from './app';
 const _app2 = _interopRequireDefault(_app);
 
 _reactDom2['default'].render(_react2['default'].createElement(_app2['default'], { items: window.APP_PROPS.items }), document.getElementById('content'));
-
