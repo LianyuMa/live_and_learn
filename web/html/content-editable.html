@@ -24,25 +24,23 @@
     <input type="button" id="clear" value="Clear changes" />
   </div>
   <script>
-    var editable = document.getElementById('editable');
-
-    addEvent(editable, 'blur', function() {
+    document.getElementById("editable").addEventListener("blur", function() {
       // lame that we're hooking the blur event
-      LocalStorage,setItem('contenteditable', this.innerHTML);
+      localStorage.setItem('contenteditable', this.innerHTML);
       document.designMode = 'off';
     });
 
-    addEvent(editable, 'focus', function() {
+    document.getElementById("editable").addEventListener("focus", function() {
       document.designMode = 'on'
     });
 
-    addEvent(document.getElementById('clear'), 'click', function () {
-      LocalStorage.clear();
+    document.getElementById("clear").addEventListener("click", function () {
+      localStorage.clear();
       window.location = window.location; // refresh
     });
 
-    if (LocalStorage.getItem('contenteditable')) {
-      editable.innerHTML = LocalStorage.getItem('contenteditable');
+    if (localStorage.getItem('contenteditable')) {
+      editable.innerHTML = localStorage.getItem('contenteditable');
     }
   </script>
 </body>
