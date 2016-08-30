@@ -1,11 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Content Editable</title>
 </head>
 <body>
+  <h1>Content Editable</h1>
   <div contenteditable="true">
     This text can be edited by the user.
   </div>
+  <hr>
+  <h2>Mixed with LocalStorage</h2>
+  <section id="editable" contenteditable="true">
+    <ol>
+      <li>Firefox 3.5+</li>
+      <li>Chrome 6.0+</li>
+      <li>Internet Explorer 6.0+</li>
+      <li>Safari 3.2+</li>
+      <li>Opera 8+</li>
+    </ol>
+  </section>
+  <div>
+    <input type="button" id="clear" value="Clear changes" />
+  </div>
+  <script>
+    var editable = document.getElementById('editable');
+
+    addEvent(editable, 'blur', function() {
+      // lame that we're hooking the blur event
+      LocalStorage,setItem('contenteditable', this.innerHTML);
+      document.designMode = 'off';
+    });
+
+    addEvent(editable, 'focus', function() {
+      document.designMode = 'on'
+    });
+
+    addEvent(document.getElementById('clear'), 'click', function () {
+      LocalStorage.clear();
+      window.location = window.location; // refresh
+    });
+
+    if (LocalStorage.getItem('contenteditable')) {
+      editable.innerHTML = LocalStorage.getItem('contenteditable');
+    }
+  </script>
 </body>
 </html>
