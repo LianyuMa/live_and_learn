@@ -2,6 +2,9 @@
 // div.innerHTML = "Hello, world!";
 // document.body.appendChild(div);
 
-var body = d3.select("body");
-var div = body.append("div");
+// var body = d3.select("body");
+
+var section = d3.selectAll("section");
+var div = section.append("div");
 div.html("Hello, world!");
+
