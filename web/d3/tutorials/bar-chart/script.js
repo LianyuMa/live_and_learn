@@ -4,9 +4,14 @@
 
 // var body = d3.select("body");
 
-var section = d3.selectAll("section");
-var div = section.append("div");
-div.html("Hello, world!");
+// var section = d3.selectAll("section");
+// var div = section.append("div");
+// div.html("Hello, world!");
+
+d3.selectAll("section")
+    .attr("class", "special")
+  .append("div")
+    .html("Hello, world!")
 
 // var body = d3.select("body");
 // body.style("color", "white");
