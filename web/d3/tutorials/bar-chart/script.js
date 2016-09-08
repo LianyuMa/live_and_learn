@@ -8,3 +8,6 @@ var section = d3.selectAll("section");
 var div = section.append("div");
 div.html("Hello, world!");
 
+var body = d3.select("body");
+body.style("color", "white");
+body.style("background-color", "black");
