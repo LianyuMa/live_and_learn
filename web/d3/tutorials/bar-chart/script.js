@@ -8,10 +8,17 @@
 // var div = section.append("div");
 // div.html("Hello, world!");
 
-d3.selectAll("section")
-    .attr("class", "special")
+var section = d3.selectAll("section");
+
+section.attr("class", "special")
   .append("div")
-    .html("Hello, world!")
+    .html("Hello, world!");
+
+section.append("div")
+  .html("First!");
+
+section.append("div")
+  .html("Second.");
 
 // var body = d3.select("body");
 // body.style("color", "white");
