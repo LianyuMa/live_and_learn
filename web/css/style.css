@@ -19,12 +19,14 @@
 @-webkit-keyframes box{
   0%{
     top:50px;
+    transform: rotate(90deg);
   }
   20%{
     border-radius:2px;
   }
   50%{
-    top:80px; 
+    top:80px;
+    transform: rotate(45deg);
     border-bottom-right-radius:25px;
   }
   80%{
@@ -32,6 +34,7 @@
   }
   100%{
     top:50px;
+    transform: rotate(0deg);
   }
 }
 
