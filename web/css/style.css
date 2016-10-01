@@ -13,7 +13,7 @@
   background:#c00;
   border-radius:2px;
   transform: rotate(45deg);
-  -webkit-animation:box .8s infinite ;
+  -webkit-animation:box .8s linear infinite ;
 }
 
 @-webkit-keyframes box{
@@ -50,6 +50,7 @@
   height:3px;
   background:#eaeaea;
   border-radius:100%;
+  -webkit-animation:shadow .5s linear infinite ;
 }
 
 @-webkit-keyframes shadow{
