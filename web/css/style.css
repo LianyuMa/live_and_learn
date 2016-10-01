@@ -67,3 +67,20 @@
     background:#eee;
   }
 }
+
+#google_loading > div{
+  left:50px;
+  width:50px;
+  height:100px;
+  border-radius:0 50px 50px 0;
+  position:absolute;
+  z-index:10;
+  -webkit-perspective:200px;
+  -webkit-transform:rotateY(0deg);
+  -webkit-animation:bgColor1_key 4s linear infinite both,rotate_key 4s infinite both;
+  -webkit-transform-origin:0 50%;
+  perspective:200px;
+  transform:rotateY(0deg);
+  animation:bgColor1_key 4s linear infinite both,rotate_key 4s infinite both;
+  transform-origin:0 50%;
+}
