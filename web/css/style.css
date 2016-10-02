@@ -84,3 +84,17 @@
   animation:bgColor1_key 4s linear infinite both,rotate_key 4s infinite both;
   transform-origin:0 50%;
 }
+
+#google_loading>div:after{
+  content:'';
+  position:absolute;
+  z-index:10;
+  top:0;
+  left:-50px;
+  width:50px;
+  height:100px;
+  border-radius:50px 0 0 50px;
+  background:#ccc;
+  -webkit-animation:bgColor2_key 4s linear infinite both;
+  animation:bgColor2_key 4s linear infinite both;
+}
