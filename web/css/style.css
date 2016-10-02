@@ -98,3 +98,20 @@
   -webkit-animation:bgColor2_key 4s linear infinite both;
   animation:bgColor2_key 4s linear infinite both;
 }
+
+#google_loading>div:before{
+  content:'';
+  position:absolute;
+  z-index:11;
+  top:0;
+  left:0px;
+  width:50px;
+  height:100px;
+  border-radius:0 50px 50px 0;
+  -webkit-transform-origin:0 50%;
+  -webkit-transform:rotateY(0deg) rotateZ(0deg);
+  -webkit-animation:flipColor_key 4s linear infinite both,flip_key 4s linear infinite both;
+  transform-origin:0 50%;
+  transform:rotateY(0deg) rotateZ(0deg);
+  animation:flipColor_key 4s linear infinite both,flip_key 4s linear infinite both;
+}
