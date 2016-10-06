@@ -237,3 +237,17 @@
     height:300px;
   }
 }
+
+.ybox {
+  background: rgba(255, 200, 0, .8);
+  margin: 20px;
+  z-index: 3;
+}
+.gbox {
+  background: rgba(0, 220, 170, .8);
+  margin: -80px 40px 20px;
+  z-index: 2;
+}
+.gbox:hover{
+  background: rgba(255, 50, 50, .8);
+}
