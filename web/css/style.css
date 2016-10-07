@@ -192,37 +192,44 @@
   height:30px;
   border-radius:300px;
 }
+
 .wave0{
   background:#f00;
   z-index:2;
   background-size:auto 106%;
   -webkit-animation:w 1s forwards;
 }
+
 .wave1{
   background:#d00;
   z-index:3;
   -webkit-animation:w 1s .2s forwards;
 }
+
 .wave2{
   background:#b00;
   z-index:4;
   -webkit-animation:w 1s .4s forwards;
 }
+
 .wave3{
   background:#900;
   z-index:5;
   -webkit-animation:w 1s .5s forwards;
 }
+
 .wave4{
   background:#700;
   z-index:6;
   -webkit-animation:w 1s .8s forwards;
 }
+
 .wave5{
   background:#500;
   z-index:7;
   -webkit-animation:w 1s 1s forwards;
 }
+
 @-webkit-keyframes w{
   0%{
     top:calc((100% - 30px)/2);
