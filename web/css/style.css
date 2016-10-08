@@ -292,4 +292,7 @@
   color:#fff;
   text-shadow:rgba(100,0,0,1) 0 0 3px;
   background:#c00;
+  background:-webkit-linear-gradient(45deg,#fc0 0%,#fc0 20%,#fa0 20%, #fa0 45%,#fc0 45%,#fc0 70%,#fa0 70%, #fa0 95%,#fc0 95%,#fc0 100%);
+  background-size:30px 30px;
+  background-position:0 0;
 }
