@@ -265,3 +265,15 @@
 #test:hover {
   fill: #09f;
 }
+
+.btn{
+  position:relative;
+  width:200px;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+  border-radius:3px;
+  background:#5ad;
+  color:#fff;
+  cursor:pointer;
+}
