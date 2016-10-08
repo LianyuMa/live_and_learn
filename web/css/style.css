@@ -277,3 +277,19 @@
   color:#fff;
   cursor:pointer;
 }
+
+.btn::before{
+  content:"loading";
+  position:absolute;
+  width:200px;
+  height:30px;
+  line-height:30px;
+  text-align:center;
+  border-radius:3px;
+  z-index:2;
+  top:0;
+  left:0;
+  color:#fff;
+  text-shadow:rgba(100,0,0,1) 0 0 3px;
+  background:#c00;
+}
