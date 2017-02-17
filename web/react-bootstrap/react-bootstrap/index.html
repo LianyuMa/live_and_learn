@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8">
   <title>React Bootstrap</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <script type="text/javascript" src="js/react.min.js"></script>
+  <script type="text/javascript" src="js/react-dom.min.js"></script>
+  <script src="js/browser.min.js"></script>
 </head>
 <body>
   <!--[if lt IE 8]>
@@ -10,6 +14,12 @@
     Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
   <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
+  <div id="hello"></div>
+  <script type="text/babel">
+    ReactDOM.render(
+      <h1>Hello, world!</h1>,
+      document.getElementById('hello')
+    );
+  </script>
 </body>
 </html>
