@@ -10,32 +10,31 @@
   <script src="js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
+
   <div id="nav"></div>
   <script type="text/babel">
     var navbarHTML =
-      <nav className="navbar navbar-default navbar-static-top" role="navigation">
-        <div className="container">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-            </button>
-            <a className="navbar-brand" href="#">EIS</a>
-          </div>
-          <ul className="nav navbar-nav">
-            <li className="active"><a href="#">Home</a></li>
-            <li><a href="#">Edit Profile</a></li>
-            <li className="dropdown">
-              <a href="#" className="dropdown-toggle" data-toggle="dropdown">Help Desk <b className="caret"></b></a>
-              <ul className="dropdown-menu">
-                <li><a href="#">View Tickets</a></li>
-                <li><a href="#">New Tickets</a></li>
-              </ul>
+      <nav className="navbar navbar-toggleable-md navbar-light bg-faded" role="navigation">
+
+        <button type="button" className="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <a className="navbar-brand" href="#">EIS</a>
+
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul className="navbar-nav">
+            <li className="nav-item active"><a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a></li>
+            <li className="nav-item"><a className="nav-link" href="#">Edit Profile</a></li>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Help Desk <span className="sr-only">(current)</span></a>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a className="dropdown-item" href="#">View Tickets</a>
+                <a className="dropdown-item" href="#">New Tickets</a>
+              </div>
             </li>
-          </ul>
+          </ul>          
         </div>
+
       </nav>
 
       ReactDOM.render(navbarHTML, document.getElementById('nav'));
