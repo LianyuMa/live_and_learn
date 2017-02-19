@@ -11,7 +11,7 @@
 </head>
 <body>
 
-  <div id="nav"></div>
+  
   <script type="text/babel">
 
     var Nav= ReactBootstrap.Nav;
@@ -31,7 +31,7 @@
       <Nav>
       <NavItem eventKey={1} href="#">Home</NavItem>
       <NavItem eventKey={2} href="#">Edit Profile</NavItem>
-      <NavDropdown eventKey={3} id="basicnav-
+      <NavDropdown eventKey={3} id="basic-nav-
       dropdown">
       <MenuItem eventKey={3.1}>View Tickets</MenuItem>
       <MenuItem eventKey={3.2}>New Ticket</MenuItem>
@@ -42,6 +42,34 @@
     );
 
     ReactDOM.render(navbarReact, document.getElementById('nav'));
+
+    var Sidebar = React.DOM.ul({ className: 'list-group' },
+      React.DOM.li({className:'list-group-item text-muted'}, 'Profile'),
+      React.DOM.li({className:'list-group-item'},
+        React.DOM.a({className:'center-block text-center', href:'#'}, 'Image')
+      ),
+      React.DOM.li({className:'list-group-item text-right'}, '2.13.2014',
+        React.DOM.span({className:'pull-left'},
+          React.DOM.strong({className:'pull-left'}, 'Joining Date')
+        ),
+        React.DOM.div({className:'clearfix'})
+      )
+    );
+
+    ReactDOM.render(Sidebar, document.getElementById('sidebar'));
   </script>
+
+  <div id="nav"></div>
+  <div class="container">
+    <hr>
+    <div class="row">
+      <div class="col-sm-3" id="sidebar">
+        <!-- left col -->
+      </div>
+      <!-- /col-3 -->
+      <div class="col-sm-9 profile-desc"></div>
+    </div>
+    <!-- /row -->
+  </div>
 </body>
 </html>
