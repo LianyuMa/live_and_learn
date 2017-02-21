@@ -8,57 +8,10 @@
   <script type="text/javascript" src="js/react-dom.min.js"></script>
   <script src="js/browser.min.js"></script>
   <script src="js/react-bootstrap.min.js"></script>
+  <script type="text/babel" src="components/navbar.js"></script>
+  <script type="text/babel" src="components/sidebar.js"></script>
 </head>
 <body>
-
-  
-  <script type="text/babel">
-
-    var Nav= ReactBootstrap.Nav;
-    var Navbar= ReactBootstrap.Navbar;
-    var NavItem= ReactBootstrap.NavItem;
-    var NavDropdown = ReactBootstrap.NavDropdown;
-    var MenuItem= ReactBootstrap.MenuItem;
-    var navbarReact =(
-      <Navbar>
-      <Navbar.Header>
-      <Navbar.Brand>
-      <a href="#">EIS</a>
-      </Navbar.Brand>
-      <Navbar.Toggle />
-      </Navbar.Header>
-      <Navbar.Collapse>
-      <Nav>
-      <NavItem eventKey={1} href="#">Home</NavItem>
-      <NavItem eventKey={2} href="#">Edit Profile</NavItem>
-      <NavDropdown eventKey={3} id="basic-nav-
-      dropdown">
-      <MenuItem eventKey={3.1}>View Tickets</MenuItem>
-      <MenuItem eventKey={3.2}>New Ticket</MenuItem>
-      </NavDropdown>
-      </Nav>
-      </Navbar.Collapse>
-      </Navbar>
-    );
-
-    ReactDOM.render(navbarReact, document.getElementById('nav'));
-
-    var Sidebar = React.DOM.ul({ className: 'list-group' },
-      React.DOM.li({className:'list-group-item text-muted'}, 'Profile'),
-      React.DOM.li({className:'list-group-item'},
-        React.DOM.a({className:'center-block text-center', href:'#'}, 'Image')
-      ),
-      React.DOM.li({className:'list-group-item text-right'}, '2.13.2014',
-        React.DOM.span({className:'pull-left'},
-          React.DOM.strong({className:'pull-left'}, 'Joining Date')
-        ),
-        React.DOM.div({className:'clearfix'})
-      )
-    );
-
-    ReactDOM.render(Sidebar, document.getElementById('sidebar'));
-  </script>
-
   <div id="nav"></div>
   <div class="container">
     <hr>
