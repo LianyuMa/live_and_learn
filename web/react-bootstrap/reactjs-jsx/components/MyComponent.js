@@ -25,8 +25,13 @@ var MyApp = React.createClass({
     };
   },
 
-  handleToggle: function() {
-    var nextState = this.state.collapse ?
+  handleToggle: function () {
+    var nextState = !this.state.collapse;
+    this.setState({collapse: nextState});
+  },
+
+  render: function() {
+    var showhideToggle = this.state.collapse ?
       (<MessagePanel>
         <MessagePanel.Heading text='Show/Hide' />
         <MessagePanel.Content>
@@ -42,4 +47,4 @@ var MyApp = React.createClass({
   }
 });
 
-React.render(<MyApp/>, document.getElementById('toggle-example'));
+ReactDOM.render(<MyApp/>, document.getElementById('toggle-example'));
