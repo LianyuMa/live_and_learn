@@ -1,7 +1,7 @@
 /* React.DOM */
 var MessagePanel = React.createClass({
   render: function () {
-    return <div className='collapse in'>{this.props.children}</div>
+    return <div className='collapse show'>{this.props.children}</div>
   }
 });
 
@@ -25,7 +25,7 @@ var MyApp = React.createClass({
     };
   },
 
-  handleToggle: function () {
+  handleToggle: function (e) {
     var nextState = !this.state.collapse;
     this.setState({collapse: nextState});
   },
