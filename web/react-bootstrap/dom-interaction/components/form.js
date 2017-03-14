@@ -99,6 +99,24 @@ var AddTicketsForm = React.createClass({
 
 // AddTicketsForm components code ends here
 
+var ListPanel = React.createClass({
+  render: function () {
+    var item = this.props.item;
+    return (
+      <div className="panel panel-default">
+        <div className="panel-body">
+          {item.issueType}<br/>
+          {item.email}<br/>
+          {item.comment}
+        </div>
+        <div className="panel-footer">
+          {item.date.toString()}
+        </div>
+      </div>
+    );
+  }
+});
+
 var List = React.createClass({
   getListOfIds: function (items) {
     return Object.keys(items);
@@ -117,25 +135,7 @@ var List = React.createClass({
     var listItemElements = this.createListElements(items);
 
     return (
-      <p className={listItemElements.length > 0 ? "":"bg-info"}>{listItemElements.length > 0 ? listItemElements : "You have not raised any ticket yet. Fill this form to submit the ticket"}</p>
-    );
-  }
-});
-
-var ListPanel = React.createClass({
-  render: function () {
-    var item = this.props.item;
-    return (
-      <div className="panel panel-default">
-        <div className="panel-body">
-          {item.issueType}<br/>
-          {item.email}<br/>
-          {item.comment}
-        </div>
-        <div className="panel-footer">
-          {item.date.toString()}
-        </div>
-      </div>
+      <p className={listItemElements.length > 0 ? "":"bg-info text-white"}>{listItemElements.length > 0 ? listItemElements : "You have not raised any ticket yet. Fill this form to submit the ticket"}</p>
     );
   }
 });
