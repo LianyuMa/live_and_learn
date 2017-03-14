@@ -4,6 +4,16 @@ var max_Char = '140';
 var AddTicket = React.createClass({
   handleSubmitEvent: function (event) {
     event.preventDefault();
+
+    var values = {
+      date: new Date(),
+      email: this.refs.email.value.trim(),
+      issueType: this.refs.issueType.value.trim(),
+      department: this.refs.department.value.trim(),
+      comment: this.refs.comment.value.trim()
+    };
+    this.props.addTicketList(values);
+
     console.log("Email--"+this.refs.email.value.trim());
     console.log("Issue Type--"+this.refs.issueType.value.trim());
     console.log("Department--"+this.refs.department.value.trim());
@@ -52,6 +62,84 @@ var AddTicket = React.createClass({
   }
 });
 
+
+
+var AddTicketsForm = React.createClass({
+  getInitialState: function() {
+    return {
+      list: {}
+    };
+  },
+  updateList: function(newList) {
+    this.setState({
+      list: newList
+    })
+  },
+  addTicketList: function (item) {
+    var list = this.state.list;
+
+    list[item] = item;
+    // pass the item.id in array if we are using key attribute.
+    this.updateList(list);
+  },
+  render: function () {
+    var items = this.state.list;
+    return (
+      <div className="container">
+        <div className="row">
+          <div className="col-6">
+            <List items={items} />
+            <AddTicket addTicketList={this.addTicketList} />
+          </div>
+        </div>
+      </div>
+    );
+  }
+});
+
+// AddTicketsForm components code ends here
+
+var List = React.createClass({
+  getListOfIds: function (items) {
+    return Object.keys(items);
+  },
+  createListElements: function (items) {
+    var item;
+    return (
+      this.getListOfIds(items).map(function createListElements(itemId) {
+        item = items[itemId];
+        return (<ListPanel item={item} />); //key={item.id}
+      }.bind(this)).reverse()
+    );
+  },
+  render: function () {
+    var items = this.props.items;
+    var listItemElements = this.createListElements(items);
+
+    return (
+      <p className={listItemElements.length > 0 ? "":"bg-info"}>{listItemElements.length > 0 ? listItemElements : "You have not raised any ticket yet. Fill this form to submit the ticket"}</p>
+    );
+  }
+});
+
+var ListPanel = React.createClass({
+  render: function () {
+    var item = this.props.item;
+    return (
+      <div className="panel panel-default">
+        <div className="panel-body">
+          {item.issueType}<br/>
+          {item.email}<br/>
+          {item.comment}
+        </div>
+        <div className="panel-footer">
+          {item.date.toString()}
+        </div>
+      </div>
+    );
+  }
+});
+
 var Textarea = React.createClass({
   getInitialState: function() {
     return {value: '', char_Left: max_Char};
@@ -72,5 +160,5 @@ var Textarea = React.createClass({
   }
 });
 
-ReactDOM.render(<AddTicket />, document.getElementById('form'));
+ReactDOM.render(<AddTicketsForm />, document.getElementById('form'));
 ReactDOM.render(<Textarea />, document.getElementById('controlled-form'));
