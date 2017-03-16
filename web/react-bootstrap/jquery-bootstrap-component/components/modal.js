@@ -22,14 +22,14 @@ var BootstrapModal = React.createClass({
     var cancelButton = null;
     if (this.props.confirm) {
       confirmButton = (
-        <bootstrapButton onClick={this.handleConfirm} className="btn-primary">
+        <bootstrapButton onClick={this.handleConfirm} className="btn btn-primary" role="button">
           {this.props.confirm}
         </bootstrapButton>
       )
     }
     if (this.props.cancel) {
       cancelButton = (
-        <bootstrapButton onClick={this.handleCancel} className="btn-default">
+        <bootstrapButton onClick={this.handleCancel} className="btn btn-cancel" role="button">
           {this.props.cancel}
         </bootstrapButton>
       );
