@@ -24,8 +24,8 @@ var BootstrapAlert = React.createClass({
   render: function () {
     return (
       <div className={(this.props.className) + ' alert'} role="alert" ref="alertMsg">
-        <button type="button" className="close" data-dismiss="alert" aria-dismiss="alert" aria-label="Close" onClick={this.handleClose}>
-          <span aria-hidden="true">x</span>
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close" onClick={this.handleClose}>
+          <span aria-hidden="true">&times;</span>
         </button>
         <strong>Ooops!</strong> You reached the max limit
       </div>
@@ -53,7 +53,7 @@ var Textarea = React.createClass({
   render: function() {
     var alertBox = null;
     alertBox = (
-      <BootstrapAlert className="alert-warning fade in" ref="alertBox" />
+      <BootstrapAlert className="alert-warning fade show" ref="alertBox" />
     );
     return (
       <div className="example">
