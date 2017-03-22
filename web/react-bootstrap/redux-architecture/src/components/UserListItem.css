@@ -1,0 +1,17 @@
+:local(.btnAction), :local(.btnAction):active, :local(.btnAction):focus, :local(.btnAction):hover {
+  margin-right: 5px;
+  color: #5CF580;
+}
+
+:local(.userActions)
+{
+  margin-top: -20px;
+}
+
+button:focus {
+  outline: 0 !important;
+}
+
+:local(.padding10) {
+  padding-left: 10px;
+}
